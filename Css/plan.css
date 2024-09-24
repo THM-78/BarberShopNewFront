@@ -1,0 +1,91 @@
+
+.plans-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    justify-content: center;
+}
+.plans-table{
+    position: relative;
+    width: 300px;
+    background-color: rgb(204, 204, 204);
+    padding: 30px 40px;
+    box-shadow: 0 10px 15px rgb(0 0 0 / 63%);
+    margin: 2%;
+}
+.plans-table:hover{
+    transform-origin: bottom;
+    transform: scale(1.05,1.05) translateY(15px);
+    transition: 0.2s;
+}
+.plans-label{
+    position: relative;
+    width: 100%;
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: white;
+    text-align: center;
+    background-color: #FFD700;
+    padding: 5px 0;
+}
+.plans-label::before{
+    position: absolute;
+    content: '';
+    border: 24px solid transparent;
+    border-right-color: rgb(204, 204, 204);
+    top: 0;
+    right: -0.25%;
+}
+.plans-label::after{
+    position: absolute;
+    content: '';
+    border: 24px solid transparent;
+    border-left-color: rgb(204, 204, 204);
+    top: 0;
+    left: -0.25%;
+}
+.plans-price{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin: 20px 0 0 0;
+    color: black;
+}
+.plans-list{
+    width: 100%;
+    position: relative;
+    padding: 0 !important;
+}
+.plans-list li{
+    list-style:none;
+    font-size: 1.3em;
+    margin: 5px 0 0 10px;
+    color: black;
+    text-align: center;
+}
+.plans-list span{
+    margin: 0 10px;
+    color: yellow;
+}
+.plans-list .close-icon{
+    color: tomato;
+}
+.plan-btn{
+    position: relative;
+    margin: 30px 40px 0 40px;
+}
+.plan-btn button{
+    width: 100%;
+    color: rgb(117, 112, 112);
+    font-size: 1.1em;
+    font-weight: 600;
+    padding: 8px 0;
+    border-radius: 50px;
+    background-color:white ;
+    border: 2px solid rgb(117, 112, 112);
+    transition: 0.1s;
+}
+.plan-btn button:hover{
+    cursor: pointer;
+    background-color: #FFD700;
+}

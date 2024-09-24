@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ManagePage</title>
+  <link rel="stylesheet" href="Css/uikit-rtl.min.css">
+  <link rel="stylesheet" href="Css/Site.css">
+  <link rel="stylesheet" href="Css/ManageTbls.css">
+  <link rel="stylesheet" href="Css/Reservation2.css">
+  <script src="Js/jquery-3.7.0.min.js"></script>
+</head>
+<body>
+  <!--start Top Menu-->
+  <nav class="top-menu uk-visible@s">
+    <div class="uk-container uk-container-expand">
+        <div uk-navbar>
+            <div class="uk-navbar-right" uk-grid>
+                <a class="uk-navbar-item uk-logo" href="#" aria-label="Back to Home">
+                    <img src="Resources/BarberShop-logo.png" alt="logo" width="100" height="100">
+                </a>
+                <div class="menu-text uk-text-right">
+                    <p class="menu-text-right" style="gap: 10px; display: flex;" uk-margin>
+                        <a href="Home.html">
+                            <button class="uk-button uk-button-text">صفحه اصلی</button>
+                        </a>
+                        <a href="Reservation.html">
+                            <button class="uk-button uk-button-text">دریافت نوبت</button>
+                        </a>
+                        <a href="AboutUs.html">
+                            <button class="uk-button uk-button-text">تماس با ما</button>                    
+                        </a>                   
+                    </p>
+                </div>
+            </div>
+
+            <div class="uk-navbar-left"> 
+                <div class="menu-text uk-text-left">
+                    <a href="Reservation.html">
+                        <button class="menu-reserve-btn uk-button uk-text-emphasis">دریافت نوبت</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Navbar -->
+  <nav class="top-menu uk-hidden@s">
+      <div class="uk-container uk-container-expand">
+          <div uk-navbar>
+              <div class="uk-navbar-right">
+              <a class="uk-button" type="button" uk-toggle="target: #offcanvas-nav"><span uk-icon="icon: menu; ratio:1.4;"></span></a> 
+              </div>
+              <div class="uk-navbar-left"> 
+                  <div class="menu-text uk-text-left">
+                      <a href="Reservation.html">
+                          <button class="menu-reserve-btn uk-button uk-text-emphasis">دریافت نوبت</button>
+                      </a>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </nav>
+  <!-- Mobile Menu -->
+  <div id="offcanvas-nav" uk-offcanvas="overlay: true">
+      <div class="uk-offcanvas-bar canvas-menu">
+          <div class="uk-text-center">
+              <a class="uk-logo" href="Home.html"><img src="Resources/BarberShop-logo.png" width="100" height="100"></a>
+          </div>
+          <ul class="uk-nav uk-nav-default">
+              <li><a href="Home.html">صفحه اصلی</a></li>
+              <hr>
+              <li><a href="Reservation.html">دریافت نوبت</a></li>
+              <hr>
+              <li><a href="ImageAlbum.html">آلبوم عکس</a></li>
+              <hr>
+              <li><a href="AboutUs.html">تماس با ما</a></li>
+          </ul>  
+      </div>  
+  </div>
+  <div id="addbtn-div" class="uk-margin uk-text-center">
+    <!-- <a class="menu-reserve-btn uk-button uk-text-emphasis add-service-btn" href="#modal-service-add" uk-toggle="" role="button">سرویس جدید<span class="uk-margin-small-right" uk-icon="plus"></span></a> -->
+  </div>
+  <div id="table-div" class="uk-container uk-container-large">
+    <!-- <table class="uk-width-1-1"><thead><th>آیدی<th>عنوان<th>بازه زمانی </thead><tbody id="services-tbl"></tbody></table>   -->
+  </div>  
+  <div id="modal-service-edit" uk-modal>
+    <div class="uk-modal-dialog">
+
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+
+        <div class="uk-modal-header">
+            <h2 class="uk-modal-title">ویرایش سرویس</h2>
+        </div>
+
+        <div class="uk-modal-body" uk-overflow-auto>
+          <form>
+            <fieldset class="uk-fieldset">                      
+              <div class="uk-margin">
+                <label for="">عنوان : </label>
+                <input id="editservice-type" class="uk-input uk-form-width-medium" type="text" aria-label="Input">
+              </div>
+              <div class="form-group">
+                <label for="period">مدت زمان :</label>
+                <input id="editservice-time" name="period" class="period-field" type="number">
+                <span class="minute">دقیقه</span>
+              </div>
+            
+              <div class="uk-margin uk-text-right" style="width: min-content; display: flex; gap: 20px;">
+                <button type="button" class="menu-reserve-btn uk-button uk-text-emphasis uk-width-1-1 uk-modal-close">لغو</button>
+                  <button type="button" onclick="EditServiceSave(this)" class="menu-reserve-btn uk-button uk-text-emphasis uk-width-1-1 edit-service-btn">ذخیره</button>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+
+        <!-- <div class="uk-modal-footer uk-text-right">
+            <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+            <button class="uk-button uk-button-primary" type="button">Save</button>
+        </div> -->
+    </div>
+  </div>
+
+
+  <div id="modal-service-delete" uk-modal>
+    <div class="uk-modal-dialog">
+
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+
+        <div class="uk-modal-header">
+            <h2 class="uk-modal-title">حذف سرویس</h2>
+        </div>
+
+        <div class="uk-modal-body" uk-overflow-auto>
+          آیا از حذف شدن این سرویس اطمینان دارید؟
+        </div>
+
+        <div class="uk-modal-footer uk-text-right">
+          <button class="uk-button uk-text-emphasis menu-reserve-btn uk-modal-close" type="button">خیر</button>
+          <button class="uk-button uk-text-emphasis menu-reserve-btn delete-service-btn" onclick="DeleteServiceSave(this)" type="button">بله</button>
+        </div>
+    </div>
+  </div>
+  <div id="modal-service-add" uk-modal>
+    <div class="uk-modal-dialog">
+
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+
+        <div class="uk-modal-header">
+            <h2 class="uk-modal-title">اضافه کردن سرویس</h2>
+        </div>
+
+        <div class="uk-modal-body" uk-overflow-auto>
+          <form>
+            <fieldset class="uk-fieldset">                      
+              <div class="uk-margin">
+                <label for="">عنوان : </label>
+                <input id="addservice-type" class="uk-input uk-form-width-medium" type="text" aria-label="Input">
+              </div>
+              <div class="form-group">
+                <label for="period">مدت زمان :</label>
+                <input id="addservice-time" name="period" class="period-field" type="number">
+                <span class="minute">دقیقه</span>
+              </div>
+            
+              <div class="uk-margin uk-text-right" style="width: min-content; display: flex; gap: 20px;">
+                <button type="button" class="menu-reserve-btn uk-button uk-text-emphasis uk-modal-close">لغو</button>
+                <button type="button" onclick="AddServiceSave()" class="menu-reserve-btn uk-button uk-text-emphasis uk-width-1-1 add-service-btn">ذخیره</button>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+    </div>
+  </div>
+
+  <div id="modal-suggestion-view" uk-modal>
+    <div class="uk-modal-dialog">
+      <button class="uk-modal-close-default" type="button" uk-close></button><br>
+      <div class="uk-modal-body">
+          <p id="suggestion-view-text">یافت نشد</p>
+      </div>
+      <div class="uk-modal-footer uk-text-right">
+          <button class="menu-reserve-btn uk-button uk-text-emphasis uk-modal-close" type="button">بستن</button>
+      </div>
+    </div>
+  </div>
+  <div id="modal-suggestion-delete" uk-modal>
+    <div class="uk-modal-dialog">
+      <button class="uk-modal-close-default" type="button" uk-close></button>
+      <div class="uk-modal-header">
+          <h2 class="uk-modal-title">حذف پیام کاربر</h2>
+      </div>
+      <div class="uk-modal-body">
+          <p>آیا از حذف شدن این پیام اطمینان دارید؟</p>
+      </div>
+      <div class="uk-modal-footer uk-text-right">
+        <button class="uk-button uk-text-emphasis menu-reserve-btn uk-modal-close" type="button">خیر</button>
+        <button class="uk-button uk-text-emphasis menu-reserve-btn delete-suggestion-btn" onclick="DeleteSuggestionSave(this)" type="button">بله</button>
+      </div>
+  </div>
+  </div>
+
+  <div id="modal-BeforeAfter-add" uk-modal>
+    <div class="uk-modal-dialog">
+      <button class="uk-modal-close-default" type="button" uk-close></button>
+
+      <div class="uk-modal-header">
+          <h2 class="uk-modal-title">اضافه کردن عکس‌های قبل و بعد</h2>
+      </div>
+
+      <div class="uk-modal-body" uk-overflow-auto>
+        <div class="js-upload uk-placeholder uk-text-center">
+          <span uk-icon="icon: cloud-upload"></span>
+          <span class="uk-text-middle before-image-name-add">عکس قبلی را آپلود نمایید</span><br>
+          <div uk-form-custom>
+              <input id="before-img-add" type="file" onchange="BeforeImgAdd(this)" multiple>
+              <span class="uk-link">آپلود</span>
+          </div>
+        </div>
+        <div class="js-upload uk-placeholder uk-text-center">
+          <span uk-icon="icon: cloud-upload"></span>
+          <span class="uk-text-middle after-image-name-add">عکس بعدی را آپلود نمایید</span><br>
+          <div uk-form-custom>
+              <input id="after-img-add" type="file" onchange="AfterImgAdd(this)" multiple>
+              <span class="uk-link">آپلود</span>
+          </div>
+        </div>
+        <div class="uk-margin uk-margin-large-top uk-text-right" style="width: min-content; display: flex; gap: 20px;">
+          <button type="button" class="menu-reserve-btn uk-button uk-text-emphasis uk-width-1-1 uk-modal-close">لغو</button>
+          <button onclick="AddBeforeAfterSave(this)" class="menu-reserve-btn uk-button uk-text-emphasis uk-width-1-1" type="button">ذخیره</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="modal-BeforeAfter-edit" uk-modal>
+    <div class="uk-modal-dialog">
+      <button class="uk-modal-close-default" type="button" uk-close></button>
+
+      <div class="uk-modal-header">
+          <h2 class="uk-modal-title">ویرایش عکس‌های قبل و بعد</h2>
+      </div>
+      <div class="uk-container">
+        <div class="uk-column-1-2 uk-column-divider uk-text-center uk-margin-small-top BeforeAfter-image-edit">
+          <div><h4>after</h4> <div><img src="Resources/Defaultbefore_after.png" ></div></div><div> <h4>before</h4><div><img src="Resources/Defaultbefore_after.png" ></div></div>      
+        </div>
+      </div>
+      <div class="uk-modal-body" uk-overflow-auto>
+        <div class="js-upload uk-placeholder uk-text-center">
+          <span uk-icon="icon: cloud-upload"></span>
+          <span class="uk-text-middle before-image-name-edit">عکس قبلی را آپلود نمایید</span><br>
+          <div uk-form-custom>
+              <input id="before-img-edit" type="file" onchange="BeforeImgEdit(this)" multiple>
+              <span class="uk-link">آپلود عکس جدید (قبلی)</span>
+          </div>
+        </div>
+        <div class="js-upload uk-placeholder uk-text-center">
+          <span uk-icon="icon: cloud-upload"></span>
+          <span class="uk-text-middle after-image-name-edit">عکس بعدی را آپلود نمایید</span><br>
+          <div uk-form-custom>
+              <input id="after-img-edit" type="file" onchange="AfterImgEdit(this)" multiple>
+              <span class="uk-link">آپلود عکس جدید (بعدی)</span>
+          </div>
+        </div>
+        <div class="uk-margin uk-margin-large-top uk-text-right" style="width: min-content; display: flex; gap: 20px;">
+          <button type="button" class="menu-reserve-btn uk-button uk-text-emphasis uk-width-1-1 uk-modal-close">لغو</button>
+          <button onclick="EditBeforeAfterSave(this)" class="menu-reserve-btn uk-button uk-text-emphasis uk-width-1-1 edit-BeforeAfter-save" type="button">ذخیره</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div id="modal-BeforeAfter-delete" uk-modal>
+    <div class="uk-modal-dialog">
+      <button class="uk-modal-close-default" type="button" uk-close></button>
+
+      <div class="uk-modal-header">
+          <h2 class="uk-modal-title">حذف عکس‌ قبل و بعد</h2>
+      </div>
+      <div class="uk-container">
+        <div class="uk-column-1-2 uk-column-divider uk-text-center uk-margin-small-top BeforeAfter-image-delete">
+          <div><h4>after</h4> <div><img src="Resources/Defaultbefore_after.png"></div></div><div><h4>before</h4><div><img src="Resources/Defaultbefore_after.png" ></div></div>      
+        </div>
+      </div>
+      <div class="uk-margin uk-text-right" style="width: min-content; display: flex; gap: 20px;">
+        <button type="button" class="menu-reserve-btn uk-button uk-text-emphasis uk-width-1-1 uk-modal-close">لغو</button>
+        <button onclick="DeleteBeforeAfterSave(this)" class="menu-reserve-btn uk-button uk-text-emphasis uk-width-1-1 delete-BeforeAfter-save" type="button">حذف</button>
+      </div>
+    </div>
+  </div>
+  <div id="modal-discode-add" uk-modal>
+    <div class="uk-modal-dialog">
+      
+      <button class="uk-modal-close-default" type="button" uk-close></button>
+
+      <div class="uk-modal-header">
+          <h2 class="uk-modal-title">اضافه کردن کد تخفیف جدید</h2>
+      </div>
+
+      <div class="uk-modal-body" uk-overflow-auto>
+        <form>
+          <fieldset class="uk-fieldset">                      
+            <div class="uk-margin">
+              <label for="">کد : </label>
+              <input id="addDiscode-code" class="uk-input uk-form-width-medium" type="text" aria-label="Input">
+            </div>
+            <div class="form-group">
+              <label for="period">مقدار تخفیف :</label>
+              <input id="addDiscode-percent" class="period-field" type="number">
+              <span class="minute">درصد</span>
+            </div>
+          </fieldset>
+        </form>
+        <div class="uk-margin uk-text-right" style="width: min-content; display: flex; gap: 20px;">
+          <button type="button" class="menu-reserve-btn uk-button uk-text-emphasis uk-modal-close">لغو</button>
+          <button type="button" onclick="AddDiscodeSave()" class="menu-reserve-btn uk-button uk-text-emphasis uk-width-1-1 add-discode-btn">ذخیره</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="modal-discode-edit" uk-modal>
+    <div class="uk-modal-dialog">
+      
+      <button class="uk-modal-close-default" type="button" uk-close></button>
+
+      <div class="uk-modal-header">
+          <h2 class="uk-modal-title">ویرایش کد تخفیف</h2>
+      </div>
+
+      <div class="uk-modal-body" uk-overflow-auto>
+        <form>
+          <fieldset class="uk-fieldset">                      
+            <div class="uk-margin">
+              <label for="">کد : </label>
+              <input id="editDiscode-code" class="uk-input uk-form-width-medium" type="text" aria-label="Input">
+            </div>
+            <div class="form-group">
+              <label for="period">مقدار تخفیف :</label>
+              <input id="editDiscode-percent" class="period-field" type="number">
+              <span class="minute">درصد</span>
+            </div>
+          </fieldset>
+        </form>
+        <div class="uk-margin uk-text-right" style="width: min-content; display: flex; gap: 20px;">
+          <button type="button" class="menu-reserve-btn uk-button uk-text-emphasis uk-modal-close">لغو</button>
+          <button type="button" onclick="AddDiscodeSave()" class="menu-reserve-btn uk-button uk-text-emphasis uk-width-1-1 add-discode-btn">ذخیره</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="modal-discode-delete" uk-modal>
+    <div class="uk-modal-dialog">
+      
+      <button class="uk-modal-close-default" type="button" uk-close></button>
+
+      <div class="uk-modal-header">
+          <h2 class="uk-modal-title">ویرایش کد تخفیف</h2>
+      </div>
+
+      <div class="uk-modal-body" uk-overflow-auto>
+        آیا از حذف شدن این کد اطمینان دارید؟
+      </div>
+
+      <div class="uk-modal-footer uk-text-right">
+        <button class="uk-button uk-text-emphasis menu-reserve-btn uk-modal-close" type="button">خیر</button>
+        <button class="uk-button uk-text-emphasis menu-reserve-btn delete-discode-btn" onclick="DeleteDiscodeSave(this)" type="button">بله</button>
+      </div>
+    </div>
+  </div>
+  <div id="modal-stylist-edit" uk-modal>
+    <div class="uk-modal-dialog">
+      
+      <button class="uk-modal-close-default" type="button" uk-close></button>
+
+      <div class="uk-modal-header">
+          <h2 class="uk-modal-title">ویرایش آرایشگر</h2>
+      </div>
+
+      <div class="uk-modal-body" uk-overflow-auto>
+        <form>
+          <div class="uk-child-width-1-2" style="display: flex;align-items: baseline;">
+            <div class="uk-margin">
+              <label for="">نام : </label>
+              <input id="editStylist-name" class="uk-input uk-form-width-medium" type="text" aria-label="Input">
+            </div>
+            <div class="uk-margin">
+              <button type="button" class="step1-btn stylistLevelEdit-dropdown-btn"><span class="stylistLevelEdit-dropdown-title">سطح آرایشگر</span><span uk-icon="icon: triangle-down"></span>
+              </span></button>
+              <ul class="reservation-dropdown stylistLevelEdit-dropdown uk-list">
+                  
+              </ul>
+            </div>
+          </div>
+          <fieldset class="uk-fieldset">                      
+            <div class="js-upload uk-placeholder uk-text-center">
+              <span uk-icon="icon: cloud-upload"></span>
+              <span class="uk-text-middle stylist-image-name-edit">پروفایل جدید را آپلود نمایید</span><br>
+              <div class="uk-container">
+                <div class="uk-column-divider uk-text-center uk-margin-small-top stylist-image-edit">
+                  <div><div id="edit-stylist-img-tag"><img src="Resources/Defaultbefore_after.png" ></div></div>
+                </div>
+              </div>
+              <div uk-form-custom>
+                  <input id="stylist-img-edit" type="file" accept="image/*" onchange="StylistImgEdit(this)" multiple>
+                  <span class="uk-link">آپلود</span>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+        <div class="uk-margin uk-text-right" style="width: min-content; display: flex; gap: 20px;">
+          <button type="button" class="menu-reserve-btn uk-button uk-text-emphasis uk-modal-close">لغو</button>
+          <button type="button" onclick="EditStylistSave(this)" class="menu-reserve-btn uk-button uk-text-emphasis uk-width-1-1 edit-stylist-save">ذخیره</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="modal-stylist-delete" uk-modal>
+    <div class="uk-modal-dialog">
+      
+      <button class="uk-modal-close-default" type="button" uk-close></button>
+
+      <div class="uk-modal-body" uk-overflow-auto>
+        آیا از حذف شدن این آرایشگر اطمینان دارید؟
+      </div>
+
+      <div class="uk-modal-footer uk-text-right">
+        <button class="uk-button uk-text-emphasis menu-reserve-btn uk-modal-close" type="button">خیر</button>
+        <button class="uk-button uk-text-emphasis menu-reserve-btn delete-stylist-btn" onclick="DeleteStylistSave(this)" type="button">بله</button>
+      </div>
+    </div>
+  </div>
+  <nav id="pagination-nav" aria-label="pagination" style="display: none;">
+    <ul class="pagination">
+        <li><a href=""><span aria-hidden="true">&laquo;</span><span class="visuallyhidden">previous set of pages</span></a></li>
+        <div id="pagination-pages" class="uk-flex">
+          <li><a onclick="ChangePage(this)"><span class="visuallyhidden"></span>1</a></li>
+          <li><a onclick="ChangePage(this)"><span class="visuallyhidden"></span>2</a></li>
+          <li><a onclick="ChangePage(this)"><span class="visuallyhidden"></span>3</a></li>
+          <li><a onclick="ChangePage(this)"><span class="visuallyhidden"></span>4</a></li>
+        </div>
+        <li><a href=""><span class="visuallyhidden">next set of pages</span><span aria-hidden="true">&raquo;</span></a></li>
+    </ul>
+  </nav>
+
+
+
+
+
+
+
+
+
+
+
+  <script src="Js/uikit.min.js"></script>
+  <script src="Js/uikit-icons.min.js"></script>
+  <script src="Js/ManageTbls.js"></script>
+</body>
+</html>

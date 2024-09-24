@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" >
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="Css/ImageAlbum.css">
+  <link rel="stylesheet" href="Css/uikit-rtl.min.css">
+  <link rel="stylesheet" href="Css/uikit.min.css">
+  <link rel="stylesheet" href="Css/Site.css">
+  <script src="Js/jquery-3.7.0.min.js"></script>
+  <title>Image Albumns</title>
+
+</head>
+<body>
+<!--start Top Menu-->
+<nav class="top-menu uk-visible@s">
+    <div class="uk-container uk-container-expand">
+        <div uk-navbar>
+            <div class="uk-navbar-right" uk-grid>
+                <a class="uk-navbar-item uk-logo" href="#" aria-label="Back to Home">
+                    <img src="Resources/BarberShop-logo.png" alt="logo" width="100" height="100">
+                </a>
+                <div class="menu-text uk-text-right">
+                    <p class="menu-text-right" style="gap: 10px; display: flex;" uk-margin>
+                        <a href="Home.html">
+                            <button class="uk-button uk-button-text">صفحه اصلی</button>
+                        </a>
+                        <a href="Reservation.html">
+                            <button class="uk-button uk-button-text">دریافت نوبت</button>
+                        </a>
+                        <a href="">
+                            <button class="uk-button uk-button-text">تماس با ما</button>                    
+                        </a>                    
+                    </p>
+                </div>
+            </div>
+
+            <div class="uk-navbar-left"> 
+                <div class="menu-text uk-text-left">
+                    <a href="Reservation.html">
+                        <button class="menu-reserve-btn uk-button uk-text-emphasis">دریافت نوبت</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Mobile Navbar -->
+<nav class="top-menu uk-hidden@s">
+    <div class="uk-container uk-container-expand">
+        <div uk-navbar>
+            <div class="uk-navbar-right">
+            <a class="uk-button" type="button" uk-toggle="target: #offcanvas-nav"><span uk-icon="icon: menu; ratio:1.4;"></span></a> 
+            </div>
+            <div class="uk-navbar-left"> 
+                <div class="menu-text uk-text-left">
+                    <a href="Reservation.html">
+                        <button class="menu-reserve-btn uk-button uk-text-emphasis">دریافت نوبت</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+<!-- Mobile Menu -->
+<div id="offcanvas-nav" uk-offcanvas="overlay: true">
+    <div class="uk-offcanvas-bar canvas-menu">
+        <div class="uk-text-center">
+            <a class="uk-logo" href="Home.html"><img src="Resources/BarberShop-logo.png" width="100" height="100"></a>
+        </div>
+        <ul class="uk-nav uk-nav-default">
+            <li><a href="Home.html">صفحه اصلی</a></li>
+            <hr>
+            <li><a href="Reservation.html">دریافت نوبت</a></li>
+            <hr>
+            <li><a href="ImageAlbum.html">آلبوم عکس</a></li>
+            <hr>
+            <li><a href="#">تماس با ما</a></li>
+        </ul>  
+    </div>  
+</div>
+<!--End Top Menu-->
+<!-- partial:index.partial.html -->
+<div class="img-content">
+    <h1>عنوان کلی</h1>
+    <div class="gallery">
+        
+    </div>
+</div>
+<!-- partial -->
+<!-- <script src="Js/ImageAlbum2.js"></script> -->
+<script  src="Js/ImageAlbum.js"></script>
+<script src="Js/uikit.min.js"></script>
+<script src="Js/uikit-icons.min.js"></script>
+
+</body>
+</html>

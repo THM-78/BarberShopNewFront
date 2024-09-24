@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Css/uikit-rtl.min.css">
+    <link rel="stylesheet" href="Css/uikit.min.css">
+    <link rel="stylesheet" href="Css/Site.css">
+    <link href="css/foundation.css" rel="stylesheet" type="text/css" />
+    <link href="css/twentytwenty-no-compass.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="Css/plan.css">
+    <script src="Js/jquery-3.7.0.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="Resources/BarberShop-logo.png">
+    <title>BarberShopName</title>
+</head>
+<body>
+        <!--start Top Menu-->
+        <nav class="top-menu uk-visible@s">
+            <div class="uk-container uk-container-expand">
+                <div uk-navbar>
+                    <div class="uk-navbar-right" uk-grid>
+                        <a class="uk-navbar-item uk-logo" href="#" aria-label="Back to Home">
+                            <img src="Resources/BarberShop-logo.png" alt="logo" width="100" height="100">
+                        </a>
+                        <div class="menu-text uk-text-right">
+                            <p class="menu-text-right" style="gap: 10px; display: flex;" uk-margin>
+                                <a href="#">
+                                    <button class="uk-button uk-button-text">صفحه اصلی</button>
+                                </a>
+                                <a href="Reservation3.html">
+                                    <button class="uk-button uk-button-text">دریافت نوبت</button>
+                                </a>
+                                <a href="AboutUs.html">
+                                    <button class="uk-button uk-button-text">تماس با ما</button>                    
+                                </a>                   
+                            </p>
+                        </div>
+                    </div>
+        
+                    <div class="uk-navbar-left"> 
+                        <div class="menu-text uk-text-left">
+                            <a href="Reservation3.html">
+                                <button class="menu-reserve-btn uk-button uk-text-emphasis">دریافت نوبت</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    
+        <!-- Mobile Navbar -->
+        <nav class="top-menu uk-hidden@s">
+            <div class="uk-container uk-container-expand">
+                <div uk-navbar>
+                    <div class="uk-navbar-right">
+                    <a class="uk-button" type="button" uk-toggle="target: #offcanvas-nav"><span uk-icon="icon: menu; ratio:1.4;"></span></a> 
+                    </div>
+                    <div class="uk-navbar-left"> 
+                        <div class="menu-text uk-text-left">
+                            <a href="Reservation3.html">
+                                <button class="menu-reserve-btn uk-button uk-text-emphasis">دریافت نوبت</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="offcanvas-nav" uk-offcanvas="overlay: true">
+            <div class="uk-offcanvas-bar canvas-menu">
+                <div class="uk-text-center">
+                    <a class="uk-logo" href="Home.html"><img src="Resources/BarberShop-logo.png" width="100" height="100"></a>
+                </div>
+                <ul class="uk-nav uk-nav-default">
+                    <li><a href="Home.html">صفحه اصلی</a></li>
+                    <hr>
+                    <li><a href="Reservation.html">دریافت نوبت</a></li>
+                    <hr>
+                    <li><a href="ImageAlbum.html">آلبوم عکس</a></li>
+                    <hr>
+                    <li><a href="AboutUs.html">تماس با ما</a></li>
+                </ul>  
+            </div>  
+        </div>
+        <!--End Top Menu-->    <div class="background uk-visible@s">
+        <div class="uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" data-src="Resources/AdobeStock.jpeg" uk-sticky="start:0; end: 500; offset: 0; media: 640" uk-img></div>
+    </div>
+    <div class="white-bg shadow uk-visible@s">
+        <div class="uk-container before-after-container uk-padding-remove-horizontal uk-padding-large">
+            <h2 class="uk-text-center"><span uk-icon="icon: minus; ratio:3;"></span> نمونه کارها <span uk-icon="icon: minus; ratio:3;"></span></h2>
+            <div class="row" style="margin-bottom: 2em;" >
+                <div class="large-5 columns">
+                    <div class="twentytwenty-container">
+                    <img id="img1before" src="Resources/Defaultbefore_after.png">
+                    <img id="img1after" src="Resources/Defaultbefore_after.png">
+                    </div>
+                </div>
+                <div class="large-5 columns">
+                    <div class="twentytwenty-container">
+                    <img id="img2before" src="Resources/Defaultbefore_after.png">
+                    <img id="img2after" src="Resources/Defaultbefore_after.png">
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-bottom: 2em;" >
+                <div class="large-5 columns">
+                    <div class="twentytwenty-container">
+                    <img id="img1before" src="Resources/Defaultbefore_after.png">
+                    <img id="img1after" src="Resources/Defaultbefore_after.png">
+                    </div>
+                </div>
+                <div class="large-5 columns">
+                    <div class="twentytwenty-container">
+                    <img id="img2before" src="Resources/Defaultbefore_after.png">
+                    <img id="img2after" src="Resources/Defaultbefore_after.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="uk-container uk-padding-large">
+            <div class="uk-child-width-1-2@m uk-text-center" uk-grid>
+                <div>
+                    <div class="uk-card uk-card-body shop-card">
+                        <span uk-icon="icon: location; ratio: 3.5"></span>
+                        <p class="uk-text-center">تبریز , خیابان بارون آواک نبش کوی اهراب</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="uk-child-width-1-2@m uk-text-center" uk-grid>
+                        <div>
+                            <a class="uk-link-heading" href="ImageAlbum.html">
+                                <div class="uk-card uk-card-body shop-card">
+                                    <span uk-icon="icon: image; ratio: 3.5"></span>
+                                    <p class="uk-text-center">آلبوم عکس</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div>
+                            <a class="uk-link-heading" href="Reservation3.html">
+                                <div class="uk-card uk-card-body shop-card">
+                                    <span uk-icon="icon: file-text; ratio: 3.5"></span>
+                                    <p class="uk-text-center">رزرو نوبت</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="uk-container uk-container-expand Hair-stylist-container">
+            <div class="uk-margin uk-text-center uk-text-emphasis">
+                <h2 class="uk-visible@s"><span style="color:#e8be16;" uk-icon="icon: minus; ratio:3;"></span> همکاران و کارکنان آرایشگاه مورد نظر <span style="color:#e8be16;" uk-icon="icon: minus; ratio:3;"></span></h2>
+                <h4 class="uk-hidden@s"><span style="color:#e8be16;" uk-icon="icon: minus; ratio:2;"></span> همکاران و کارکنان آرایشگاه مورد نظر <span style="color:#e8be16;" uk-icon="icon: minus; ratio:2;"></span></h4>
+            </div>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+            integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+            crossorigin="anonymous" />
+            <link rel="stylesheet" href="Css/profiles.css">
+            <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider>
+        
+                <ul class="Hair-stylist-prof uk-slider-items uk-child-width-1-1@s uk-child-width-1-3@m uk-grid">
+                    
+                </ul>
+            
+                <a style="color: rgb(117, 112, 112);" class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slider-item="next"></a>
+                <a style="color: rgb(117, 112, 112);" class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
+            
+            </div>
+        </div>
+    
+        <div class="plans uk-padding-remove-horizontal uk-padding-large">
+            <div class="uk-text-center uk-text-emphasis">
+                <h2 class="uk-visible@s"><span style="color:#e8be16;" uk-icon="icon: minus; ratio:3;"></span> تعرفه خدمات سالن مورد نظر <span style="color:#e8be16;" uk-icon="icon: minus; ratio:3;"></span></h2>
+                <h3 class="uk-hidden@s"><span style="color:#e8be16;" uk-icon="icon: minus; ratio:2.5;"></span> تعرفه خدمات سالن مورد نظر <span style="color:#e8be16;" uk-icon="icon: minus; ratio:2.5;"></span></h3>
+            </div>
+            <div class="plans-wrapper">
+                <div class="plans-table">
+                    <div class="plans-label">تعرفه</div>
+                    <div class="plans-price">
+                        <h2>1,500,000 تومان</h2>
+                    </div>
+                    <ul class="plans-list">
+                        <li><span uk-icon="icon: check;"></span>متن درخواستی</li>
+                        <li><span class="close-icon" uk-icon="icon: close;"></span>متن درخواستی</li>
+                        <li><span uk-icon="icon: check;"></span>متن درخواستی</li>
+                        <li><span class="close-icon" uk-icon="icon: close;"></span>متن درخواستی</li>
+                    </ul>
+                    <div class="plan-btn">
+                        <a href="Reservation3.html">
+                            <button>درخواست رزرو</button>
+                        </a>
+                    </div>
+                </div>
+                <div class="plans-table">
+                    <div class="plans-label">تعرفه</div>
+                    <div class="plans-price">
+                        <h2>300,000 تومان</h2>
+                    </div>
+                    <ul class="plans-list">
+                        <li><span uk-icon="icon: check;ratio:1.2;"></span>متن درخواستی</li>
+                        <li><span class="close-icon" uk-icon="icon: close; ratio:1.2;"></span>متن درخواستی</li>
+                        <li><span uk-icon="icon: check; ratio:1.2;"></span>متن درخواستی</li>
+                        <li><span class="close-icon" uk-icon="icon: close; ratio:1.2;"></span>متن درخواستی</li>
+                    </ul>
+                    <div class="plan-btn">
+                        <a href="Reservation3.html">
+                            <button>درخواست رزرو</button>
+                        </a>
+                    </div>
+                </div>
+                <div class="plans-table">
+                    <div class="plans-label">تعرفه</div>
+                    <div class="plans-price">
+                        <h2>600,000 تومان</h2>
+                    </div>
+                    <ul class="plans-list">
+                        <li><span uk-icon="icon: check;"></span>متن درخواستی</li>
+                        <li><span class="close-icon" uk-icon="icon: close;"></span>متن درخواستی</li>
+                        <li><span uk-icon="icon: check;"></span>متن درخواستی</li>
+                        <li><span class="close-icon" uk-icon="icon: close;"></span>متن درخواستی</li>
+                    </ul>
+                    <div class="plan-btn">
+                        <a href="Reservation3.html">
+                            <button>درخواست رزرو</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="uk-text-center uk-flex map-info uk-padding-remove-horizontal uk-padding-large" uk-grid>
+            <div class="uk-width-1-2@m">
+                <!-- <div class="uk-card uk-card-default uk-card-body">1-3</div> -->
+            </div>
+            <div class="uk-width-1-2@m">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3140.9619849816772!2d46.28652339185585!3d38.071266422612126!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x401a056753e6b537%3A0xd9a6f3646d22eb02!2z2obYp9m-INiv24zYrNuM2KrYp9mEINqp2YjZh9ix2Ybarw!5e0!3m2!1sen!2s!4v1691248848407!5m2!1sen!2s" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+
+    <footer class="uk-footer uk-home-footer">
+        <div class="uk-container uk-container-expand">
+          <div class="uk-grid uk-child-width-1-3@m" uk-grid>
+            <div>
+              <h2>درباره ما</h2>
+              <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.</p>
+            </div>
+            <div>
+              <h2>ارتباط با ما</h2>
+              <ul class="uk-list">
+                <li><i uk-icon="icon: location"></i> 123 Street, City, Country</li>
+                <li><i class="receiver-icon" uk-icon="icon: receiver"></i>+1 234 567890</li>
+                <li><i uk-icon="icon: instagram"></i> info@example.com</li>
+              </ul>
+            </div>
+            <div>
+              <h3>Follow Us</h3>
+              <ul class="uk-iconnav">
+                <li><a href="#" uk-icon="icon: facebook"></a></li>
+                <li><a href="#" uk-icon="icon: twitter"></a></li>
+                <li><a href="#" uk-icon="icon: instagram"></a></li>
+                <li><a href="#" uk-icon="icon: linkedin"></a></li>
+              </ul>
+            </div>      
+          </div>
+      
+          <!-- Add any additional sections or links here -->
+      
+          <hr>
+      
+          <p class="designer">طراحی شده توسط <a class="uk-button uk-button-text uk-text-default" href="https://www.instagram.com/_taha_9_" target="_blank">طاها مرادی</a></p>
+      
+        </div>
+      </footer>
+      <a href="" class="go-top uk-visible@s" uk-totop uk-scroll></a>
+    <script
+    src="https://code.jquery.com/jquery-3.2.1.js"
+    integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+    crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/stephband/jquery.event.move/js/jquery.event.move.js"></script>
+    <script src="Js/Home.js"></script>
+    <script src="Js/uikit.min.js"></script>
+    <script src="Js/uikit-icons.min.js"></script>
+    <script src="Js/jquery.twentytwenty.js"></script>
+    <script>
+        $(document).ready(function () {
+            setTimeout(function() {
+                $(".twentytwenty-container[data-orientation!='vertical']").twentytwenty({default_offset_pct: 0.7});
+                $(".twentytwenty-container[data-orientation='vertical']").twentytwenty({default_offset_pct: 0.3, orientation: 'vertical'});
+            }, 180);
+        });
+    // $(function(){
+    //    $(".twentytwenty-container[data-orientation!='vertical']").twentytwenty({default_offset_pct: 0.7});
+    //    $(".twentytwenty-container[data-orientation='vertical']").twentytwenty({default_offset_pct: 0.3, orientation: 'vertical'});
+    // //    $(window).on("load", function(){ $(".twentytwenty-container").twentytwenty(); });
+    // //    $("#container1").twentytwenty();
+    // });
+    </script>
+</body>
+</html>

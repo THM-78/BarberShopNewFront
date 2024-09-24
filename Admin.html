@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+  <head>
+    <meta charset="utf-8">
+    <title>AdminPage</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+        rel="stylesheet"
+    >
+    <link rel="stylesheet" href="Css/uikit-rtl.min.css">
+    <link rel="stylesheet" href="Css/Site.css">
+    <link rel="stylesheet" href="Css/Admin.css">
+    <link rel="stylesheet" href="Css/Reservation2.css">
+    <script src="Js/jquery-3.7.0.min.js"></script>
+  </head>
+  <body>
+      <div style="display: flex;">
+
+          <nav>
+              <div class="sidebar-top">
+                <a href="#" class="logo__wrapper">
+                  <img src="Resources/BarberShop-logo.png" alt="Logo" class="logo">
+                  <h3 class="hide">BarberShop</h3>
+                </a>
+                <div class="expand-btn">
+                  <img src="Resources/chevron.svg" alt="Chevron">
+                </div>
+              </div>
+              <div class="sidebar-links">
+                  <ul>
+                    <li>
+                      <a href="#dashboard" onclick="MainOption(this)" class="tooltip active">
+                        <img src="Resources/dashboard.svg" alt="Dashboard">
+                        <span class="link hide">داشبورد</span>
+                        <span class="tooltip__content">داشبورد</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#shopinfo" onclick="MainOption(this)" class="tooltip">
+                        <img src="Resources/analytics.svg" alt="Analytics">
+                        <span class="link hide">اطلاعات آرایشگاه</span>
+                        <span class="tooltip__content">اطلاعات آرایشگاه</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#managereservation" onclick="MainOption(this)" class="tooltip">
+                        <img src="Resources/performance.svg" alt="Performance">
+                        <span class="link hide">مدیریت رزرواسیون</span>
+                        <span class="tooltip__content">مدیریت رزرواسیون</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#photoalbum" onclick="MainOption(this)" class="tooltip">
+                        <img src="Resources/funds.svg" alt="Funds">
+                        <span class="link hide">آلبوم عکس</span>
+                        <span class="tooltip__content">آلبوم عکس</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <!-- <div class="sidebar-bottom">
+                  <div class="sidebar-links">
+                    <ul>
+                      <li>
+                        <a href="#help" title="Help" class="tooltip">
+                          <img src="Resources/help.svg" alt="Help">
+                          <span class="link hide">Help</span>
+                          <span class="tooltip__content">Help</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#settings" title="Settings" class="tooltip">
+                          <img src="Resources/settings.svg" alt="Settings">
+                          <span class="link hide">Settings</span>
+                          <span class="tooltip__content">Settings</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="sidebar__profile">
+                    <div class="avatar__wrapper">
+                      <img class="avatar" src="Resources/profile.jpg" alt="Profile">
+                      <div class="online__status"></div>
+                    </div>
+                    <div class="avatar__name hide">
+                        <div class="user-name">Joe Doe</div>
+                        <div class="email">joe.doe@atheros.ai</div>
+                    </div>
+                  </div>
+                </div> -->
+            </nav>
+            <section id="dashboard">
+
+              <div class="uk-container uk-margin-xlarge-top">
+                
+                <div class="uk-grid-column-small uk-grid-row-large uk-child-width-1-2@m uk-child-width-1-1@s uk-text-center" uk-grid>
+                    <div>
+                      <a class="uk-link-heading" href="ManageTbls.html?services"><div class="uk-card uk-card-body shop-card">سرویس ها</div></a>
+                    </div>
+                    <div>
+                      <a class="uk-link-heading" href="ManageTbls.html?hairsylists"><div class="uk-card uk-card-body shop-card">آرایشگرها</div></a>
+                    </div>
+                    <div>
+                      <a class="uk-link-heading" href="ManageTbls.html?discodes"><div class="uk-card uk-card-body shop-card">کد های تخفیف</div></a>
+                    </div>
+                    <div>
+                      <a class="uk-link-heading" href="ManageTbls.html?suggestions"><div class="uk-card uk-card-body shop-card">نظرات کاربران</div></a>
+                    </div>
+                    <div>
+                      <a class="uk-link-heading" href="ManageTbls.html?before-afters"><div class="uk-card uk-card-body shop-card">عکس‌های قبل و بعد</div></a>
+                    </div>
+                    <div>
+                      <a class="uk-link-heading" href="ManageTbls.html?users"><div class="uk-card uk-card-body shop-card">کاربران</div></a>
+                    </div>
+                </div>
+              </div>
+            </section>
+            <section id="shopinfo">
+              <div style="display: grid; justify-items: center;">
+                <table>
+                  <thead>
+                      <th>تلفن<th>آدرس<th>اینستاگرام
+                  </thead>
+                  <tbody id="tbl-shopinfo">
+                    <!---->
+                  </tbody>
+                </table>
+              </div>
+
+              <div id="modal-shopinfo" uk-modal>
+                  <div class="uk-modal-dialog">
+
+                      <button class="uk-modal-close-default" type="button" uk-close></button>
+
+                      <div class="uk-modal-header">
+                          <h2 class="uk-modal-title">ویرایش اطلاعات آرایشگاه</h2>
+                      </div>
+
+                      <div class="uk-modal-body" uk-overflow-auto>
+                        <form>
+                          <fieldset class="uk-fieldset">                      
+                            <div class="uk-margin">
+                              <label for="">شماره تلفن</label>
+                                <input id="editinfo-tell" class="uk-input" type="text" aria-label="Input">
+                            </div>
+                            <div class="uk-margin">
+                              <label for="">آدرس پیج اینستاگرام</label>
+                              <input id="editinfo-insta" class="uk-input" type="text">
+                            </div>                  
+                            <div class="uk-margin">
+                              <label for="">آدرس آرایشگاه</label>
+                                <textarea id="editinfo-address" class="uk-textarea" rows="5" aria-label="Textarea"></textarea>
+                            </div>
+                            <div class="uk-margin uk-text-right" style="width: min-content; display: flex; gap: 20px;">
+                              <button type="button" class="menu-reserve-btn uk-button uk-text-emphasis uk-width-1-1 uk-modal-close">لغو</button>
+                                <button type="button" onclick="EditInfoBtn()" class="menu-reserve-btn uk-button uk-text-emphasis uk-width-1-1 edit-info-btn">ذخیره</button>
+                            </div>
+                          </fieldset>
+                        </form>
+                      </div>
+
+                      <!-- <div class="uk-modal-footer uk-text-right">
+                          <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+                          <button class="uk-button uk-button-primary" type="button">Save</button>
+                      </div> -->
+                  </div>
+              </div>
+            </section>
+            <section id="managereservation">
+              <div id="addbtn-div" class="uk-margin uk-text-center">
+                <a class="menu-reserve-btn uk-button uk-text-emphasis add-servicePrice-btn" href="#modal-servicePrice-add" uk-toggle="" role="button" onclick="allservices()">رزرواسیون جدید<span class="uk-margin-small-right" uk-icon="plus" ></span></a>
+              </div>
+              <div style="display: grid; justify-items: center;">
+                <table>
+                  <thead>
+                      <th>آیدی<th>نوع سرویس<th>آریشگر<th>قیمت
+                  </thead>
+                  <tbody id="tbl-service-price">
+                    <!---->
+                  </tbody>
+                </table>
+                <div id="modal-servicePrice-add" uk-modal>
+                  <div class="uk-modal-dialog">
+                    <button class="uk-modal-close-default" type="button" uk-close></button>
+
+                    <div class="uk-modal-header">
+                        <h2 class="uk-modal-title">اضافه کردن رزرواسیون</h2>
+                    </div>
+
+                    <div class="uk-modal-body" uk-overflow-auto>
+                      <form>
+                        <div class="uk-child-width-1-2" style="display: flex;align-items: baseline;">
+                          <div class="uk-margin">
+                            <button type="button" class="step1-btn service-price-dropdown-btn"><span class="service-price-dropdown-title">نوع سرویس</span><span uk-icon="icon: triangle-down"></span>
+                            </span></button>
+                            <ul class="reservation-dropdown service-price-dropdown uk-list">
+                                
+                            </ul>
+                          </div>
+                          <div class="uk-margin">
+                            <button type="button" class="step1-btn stylist-price-dropdown-btn"><span class="stylist-price-dropdown-title">آرایشگر</span><span uk-icon="icon: triangle-down"></span>
+                            </span></button>
+                            <ul class="reservation-dropdown stylist-price-dropdown uk-list">
+                                
+                            </ul>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="period">قیمت (تومان):</label>
+                          <input id="addServicePrice-price" name="price" class="price-field" type="number">
+                        </div>
+                      </form>
+                      <div class="uk-margin uk-text-right" style="width: min-content; display: flex; gap: 20px;">
+                        <button type="button" class="menu-reserve-btn uk-button uk-text-emphasis uk-modal-close">لغو</button>
+                        <button type="button" onclick="AddServicePriceSave(this)" class="menu-reserve-btn uk-button uk-text-emphasis uk-width-1-1 add-servicePrice-save">ذخیره</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="modal-service-price-edit" uk-modal>
+                  <div class="uk-modal-dialog">
+                    <button class="uk-modal-close-default" type="button" uk-close></button>
+
+                    <div class="uk-modal-header">
+                        <h2 class="uk-modal-title">ویرایش رزرواسیون</h2>
+                    </div>
+
+                    <div class="uk-modal-body" uk-overflow-auto>
+                      <form>
+                        <!-- <div class="uk-child-width-1-2" style="display: flex;align-items: baseline;">
+                          <div class="uk-margin">
+                            <button type="button" class="step1-btn service-price-edit-dropdown-btn"><span class="service-price-edit-dropdown-title">نوع سرویس</span><span uk-icon="icon: triangle-down"></span>
+                            </span></button>
+                            <ul class="reservation-dropdown service-price-edit-dropdown uk-list">
+                                
+                            </ul>
+                          </div>
+                          <div class="uk-margin">
+                            <button type="button" class="step1-btn stylist-price-edit-dropdown-btn"><span class="stylist-price-edit-dropdown-title">آرایشگر</span><span uk-icon="icon: triangle-down"></span>
+                            </span></button>
+                            <ul class="reservation-dropdown stylist-price-dropdown uk-list">
+                                
+                            </ul>
+                          </div>
+                        </div> -->
+                        <div class="form-group">
+                          <label for="period">قیمت (تومان):</label>
+                          <input id="editServicePrice-price" name="price" class="price-field" type="number">
+                        </div>
+                      </form>
+                      <div class="uk-margin uk-text-right" style="width: min-content; display: flex; gap: 20px;">
+                        <button type="button" class="menu-reserve-btn uk-button uk-text-emphasis uk-modal-close">لغو</button>
+                        <button type="button" onclick="EditServicePriceSave(this)" class="menu-reserve-btn uk-button uk-text-emphasis uk-width-1-1 edit-servicePrice-save">ذخیره</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="modal-servicePrice-delete" uk-modal>
+                  <div class="uk-modal-dialog">
+              
+                      <button class="uk-modal-close-default" type="button" uk-close></button>
+              
+                      <div class="uk-modal-header">
+                          <h2 class="uk-modal-title">حذف رزرواسیون</h2>
+                      </div>
+              
+                      <div class="uk-modal-body" uk-overflow-auto>
+                        آیا از حذف شدن این رزرواسیون اطمینان دارید؟
+                      </div>
+              
+                      <div class="uk-modal-footer uk-text-right">
+                        <button class="uk-button uk-text-emphasis menu-reserve-btn uk-modal-close" type="button">خیر</button>
+                        <button class="uk-button uk-text-emphasis menu-reserve-btn delete-servicePrice-btn" onclick="DeleteServicePriceSave(this)" type="button">بله</button>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section id="photoalbum">
+              <div style="display: grid; justify-items: center;">
+                <table>
+                  <thead>
+                      <th>عنوان<th>عکس
+                  </thead>
+                  <tbody id="tbl-work-photos">
+                    <!---->
+                  </tbody>
+                </table>
+                <div id="modal-work-photos" uk-modal>
+                  <div class="uk-modal-dialog">
+                    <button class="uk-modal-close-default" type="button" uk-close></button>
+
+                    <div class="uk-modal-header">
+                        <h2 class="uk-modal-title">ویرایش</h2>
+                    </div>
+
+                    <div class="uk-modal-body" uk-overflow-auto>
+                      <div class="uk-child-width-1-2@m uk-child-width-1-1@s uk-flex">
+                        <div class="js-upload uk-placeholder uk-text-center">
+                          <span uk-icon="icon: cloud-upload"></span>
+                          <span class="uk-text-middle image-name">عکس مورد نظر را آپلود نمایید</span>
+                          <div uk-form-custom>
+                              <input id="photo" type="file" onchange="WorkPhotoinput(this)" multiple>
+                              <span class="uk-link">آپلود</span>
+                          </div>
+                        </div>
+                        <div id="img-edit-div" class="uk-text-center margin-bottom-20">
+
+                        </div>
+                      </div>
+                      <div class="uk-margin">
+                        <label for="">عنوان عکس</label>
+                        <input id="edit-work-photo-title" class="uk-input uk-form-width-medium" type="text">
+                      </div>
+                      <div class="uk-margin uk-margin-large-top uk-text-right" style="width: min-content; display: flex; gap: 20px;">
+                        <button type="button" class="menu-reserve-btn uk-button uk-text-emphasis uk-width-1-1 uk-modal-close">لغو</button>
+                        <button onclick="EditWorkPhotoBtn(this)" class="menu-reserve-btn uk-button uk-text-emphasis uk-width-1-1 edit-work-photo-btn" type="button">ذخیره</button>
+                      </div>
+                    </div>
+
+                    <!-- <div class="uk-modal-footer uk-text-right">
+                        <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+                        <button class="uk-button uk-button-primary" type="button">Save</button>
+                    </div> --> 
+                  </div>
+                </div>
+              </div>
+            </section>
+      </div>
+      <script src="Js/Admin.js"></script>
+      <script src="Js/uikit.min.js"></script>
+      <script src="Js/uikit-icons.min.js"></script>
+  </body>
+</html>

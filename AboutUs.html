@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Css/uikit-rtl.min.css">
+    <link rel="stylesheet" href="Css/uikit.min.css">
+    <link rel="stylesheet" href="Css/Site.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+            integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+    <title>تماس با ما</title>
+    <style>
+
+        body {
+            background: linear-gradient(40deg, #FFD700 0%, #757070 60%);
+            background-repeat: no-repeat;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        .formBox {
+            box-shadow: 0px 10px 30px 8px rgb(0 0 0 / 63%);
+            padding: 50px;
+            text-align: center;
+            min-height: 30vh;
+            min-width: 30vh;
+            /* display: flex;
+            flex-direction: column; */
+            background: #f8f8f885;
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+
+        }
+        /* @media only screen and (min-width: 768px){
+        .ContactUs-form{
+            width: 70%;
+            margin: 0 auto;
+        }
+        } */
+        .contactUs-container{
+            position: relative;
+            top: 5.5em;
+        }
+    </style>
+</head>
+<body id="body">
+    <!--start Top Menu-->
+    <nav class="top-menu uk-visible@s">
+        <div class="uk-container uk-container-expand">
+            <div uk-navbar>
+                <div class="uk-navbar-right" uk-grid>
+                    <a class="uk-navbar-item uk-logo" href="#" aria-label="Back to Home">
+                        <img src="Resources/BarberShop-logo.png" alt="logo" width="100" height="100">
+                    </a>
+                    <div class="menu-text uk-text-right">
+                        <p class="menu-text-right" style="gap: 10px; display: flex;" uk-margin>
+                            <a href="Home.html">
+                                <button class="uk-button uk-button-text">صفحه اصلی</button>
+                            </a>
+                            <a href="Reservation3.html">
+                                <button class="uk-button uk-button-text">دریافت نوبت</button>
+                            </a>
+                            <a href="AboutUs.html">
+                                <button class="uk-button uk-button-text">تماس با ما</button>                    
+                            </a>
+                        </p>
+                    </div>
+                </div>
+    
+                <div class="uk-navbar-left"> 
+                    <div class="menu-text uk-text-left">
+                        <a href="Reservation3.html">
+                            <button class="menu-reserve-btn uk-button uk-text-emphasis">دریافت نوبت</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Navbar -->
+    <nav class="top-menu uk-hidden@s">
+        <div class="uk-container uk-container-expand">
+            <div uk-navbar>
+                <div class="uk-navbar-right">
+                <a class="uk-button" type="button" uk-toggle="target: #offcanvas-nav"><span uk-icon="icon: menu; ratio:1.4;"></span></a> 
+                </div>
+                <div class="uk-navbar-left"> 
+                    <div class="menu-text uk-text-left">
+                        <a href="Reservation.html">
+                            <button class="menu-reserve-btn uk-button uk-text-emphasis">دریافت نوبت</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Mobile Menu -->
+    <div id="offcanvas-nav" uk-offcanvas="overlay: true">
+        <div class="uk-offcanvas-bar canvas-menu">
+            <div class="uk-text-center">
+                <a class="uk-logo" href="Home.html"><img src="Resources/BarberShop-logo.png" width="100" height="100"></a>
+            </div>
+            <ul class="uk-nav uk-nav-default">
+                <li><a href="Home.html">صفحه اصلی</a></li>
+                <hr>
+                <li><a href="Reservation.html">دریافت نوبت</a></li>
+                <hr>
+                <li><a href="ImageAlbum.html">آلبوم عکس</a></li>
+                <hr>
+                <li><a href="AboutUs.html">تماس با ما</a></li>
+            </ul>  
+        </div>  
+    </div>
+<!--End Top Menu-->
+<div class="uk-container uk-container-medium contactUs-container">
+    <div class="formBox">
+        <div class="ContactUs-form uk-hidden@s">
+            <form>
+                <fieldset class="uk-fieldset">
+            
+                    <legend class="uk-legend">با نظرت مارو خوشحال کن</legend>
+            
+                    <div class="uk-margin">
+                        <input id="user-nameS" class="uk-input" type="text" placeholder="نام و نام خانوادگی" aria-label="Input">
+                    </div>
+                    <div class="uk-margin">
+                        <input id="user-emailS" class="uk-input" type="email" placeholder="پست الکترونیک">
+                    </div>
+            
+                    <div class="uk-margin">
+                        <textarea id="user-suggestionS" class="uk-textarea" rows="5" placeholder="متن پیام" aria-label="Textarea"></textarea>
+                    </div>
+                    <div class="uk-margin">
+                        <button type="button" onclick="SendSuggestion()" class="menu-reserve-btn uk-button uk-text-emphasis uk-width-1-1">ارسال</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <div class="ContactUs-form uk-child-width-1-2 uk-visible@s uk-grid" style="align-items: center;">
+            <form>
+                <fieldset class="uk-fieldset">
+            
+                    <legend class="uk-legend">با نظرت مارو خوشحال کن</legend>
+            
+                    <div class="uk-margin">
+                        <input id="user-name" class="uk-input" type="text" placeholder="نام و نام خانوادگی" aria-label="Input">
+                    </div>
+                    <div class="uk-margin">
+                        <input id="user-email" class="uk-input" type="email" placeholder="پست الکترونیک">
+                    </div>
+            
+                    <div class="uk-margin">
+                        <textarea id="user-suggestion" class="uk-textarea" rows="5" placeholder="متن پیام" aria-label="Textarea"></textarea>
+                    </div>
+                    <div class="uk-margin">
+                        <button type="button" onclick="SendSuggestion()" class="menu-reserve-btn uk-button uk-text-emphasis uk-width-1-1">ارسال</button>
+                    </div>
+                </fieldset>
+            </form>
+            <div>
+                <img src="Resources/ContactUs-logo-removebg.png" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="uk-footer uk-aboutus-footer">
+    <div class="uk-container uk-container-expand">
+      <div class="uk-grid uk-child-width-1-3@m" uk-grid>
+        <div>
+          <h2>درباره ما</h2>
+          <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.</p>
+        </div>
+        <div>
+          <h2>ارتباط با ما</h2>
+          <ul class="uk-list">
+            <li><i uk-icon="icon: location"></i> 123 Street, City, Country</li>
+            <li><i class="receiver-icon" uk-icon="icon: receiver"></i>+1 234 567890</li>
+            <li><i uk-icon="icon: instagram"></i> info@example.com</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Follow Us</h3>
+          <ul class="uk-iconnav">
+            <li><a href="#" uk-icon="icon: facebook"></a></li>
+            <li><a href="#" uk-icon="icon: twitter"></a></li>
+            <li><a href="#" uk-icon="icon: instagram"></a></li>
+            <li><a href="#" uk-icon="icon: linkedin"></a></li>
+          </ul>
+        </div>      
+      </div>
+  
+      <!-- Add any additional sections or links here -->
+  
+      <hr>
+  
+      <p class="designer">طراحی شده توسط <a class="uk-button uk-button-text uk-text-default" href="https://www.instagram.com/_taha_9_" target="_blank">طاها مرادی</a></p>
+  
+    </div>
+</footer>
+    
+<script src="Js/jquery-3.7.0.min.js"></script>
+<script src="Js/uikit.min.js"></script>
+<script src="Js/uikit-icons.min.js"></script>
+<script src="Js/AboutUs.js"></script>    
+</body>
+</html>

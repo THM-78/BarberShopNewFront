@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Css/uikit.min.css">
+    <link rel="stylesheet" href="Css/uikit-rtl.min.css">
+    <link rel="stylesheet" href="Css/Site.css">
+    <link rel="stylesheet" href="Css/Reservation.css">
+    <link rel="stylesheet" href="Css/Reservation2.css">
+    <link rel="stylesheet" href="Css/persian-datepicker.css">
+    <script src="Js/jquery-3.7.0.min.js"></script>
+    <!-- <script src="Js/persian-date.js"></script> -->
+    <script src="Js/persian-datepicker.js"></script>
+    <script src="http://babakhani.github.io/PersianWebToolkit/beta/lib/persian-date/dist/persian-date.js"></script>
+    <!-- <link rel="stylesheet" href="http://babakhani.github.io/PersianWebToolkit/beta/lib/persian-datepicker/dist/css/persian-datepicker.css"/> -->
+    <title>Reservation</title>
+</head>
+<style>
+    .footer {
+  position: absolute;
+    bottom: 0;
+    min-height: 200px;
+    width: 100%;
+  padding: 20px 50px;
+  background: rgb(204, 204, 204);
+  align-items: center;
+}
+
+.social-icon,
+.menu {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+  flex-wrap: wrap;
+}
+
+.social-icon__item,
+.menu__item {
+  list-style: none;
+}
+
+.social-icon__link {
+  font-size: 2rem;
+  color: #333;
+  margin: 0 10px;
+  display: inline-block;
+  transition: 0.5s;
+}
+.social-icon__link:hover {
+  transform: translateY(-10px);
+}
+
+.menu__link {
+  font-size: 1.2rem;
+  color: #333;
+  margin: 0 10px;
+  display: inline-block;
+  transition: 0.5s;
+  text-decoration: none;
+  opacity: 0.75;
+  font-weight: 300;
+}
+
+.menu__link:hover {
+  opacity: 1;
+}
+
+.footer p {
+  color: #fff;
+  margin: 15px 0 10px 0;
+  font-size: 1rem;
+  font-weight: 300;
+  direction: ltr;
+}
+</style>
+<body>
+    <div class="container">
+        <div class="content-wrap uk-position-relative">
+            <!--start Top Menu-->
+            <nav class="top-menu uk-visible@s">
+                <div class="uk-container uk-container-expand">
+                    <div uk-navbar>
+                        <div class="uk-navbar-right" uk-grid>
+                            <a class="uk-navbar-item uk-logo" href="#" aria-label="Back to Home">
+                                <img src="Resources/BarberShop-logo.png" alt="logo" width="100" height="100">
+                            </a>
+                            <div class="menu-text uk-text-right">
+                                <p class="menu-text-right" style="gap: 10px; display: flex;" uk-margin>
+                                    <a href="Home.html">
+                                        <button class="uk-button uk-button-text">صفحه اصلی</button>
+                                    </a>
+                                    <a href="Reservation.html">
+                                        <button class="uk-button uk-button-text">دریافت نوبت</button>
+                                    </a>
+                                    <a href="AboutUs.html">
+                                        <button class="uk-button uk-button-text">تماس با ما</button>                    
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+            
+                        <div class="uk-navbar-left"> 
+                            <div class="menu-text uk-text-left">
+                                <a href="Reservation.html">
+                                    <button class="menu-reserve-btn uk-button uk-text-emphasis">دریافت نوبت</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        
+            <!-- Mobile Navbar -->
+            <nav class="top-menu uk-hidden@s">
+                <div class="uk-container uk-container-expand">
+                    <div uk-navbar>
+                        <div class="uk-navbar-right">
+                        <a class="uk-button" type="button" uk-toggle="target: #offcanvas-nav"><span uk-icon="icon: menu; ratio:1.4;"></span></a> 
+                        </div>
+                        <div class="uk-navbar-left"> 
+                            <div class="menu-text uk-text-left">
+                                <a href="Reservation.html">
+                                    <button class="menu-reserve-btn uk-button uk-text-emphasis">دریافت نوبت</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <!-- Mobile Menu -->
+            <div id="offcanvas-nav" uk-offcanvas="overlay: true">
+                <div class="uk-offcanvas-bar canvas-menu">
+                    <div class="uk-text-center">
+                        <a class="uk-logo" href="Home.html"><img src="Resources/BarberShop-logo.png" width="100" height="100"></a>
+                    </div>
+                    <ul class="uk-nav uk-nav-default">
+                        <li><a href="Home.html">صفحه اصلی</a></li>
+                        <hr>
+                        <li><a href="Reservation.html">دریافت نوبت</a></li>
+                        <hr>
+                        <li><a href="ImageAlbum.html">آلبوم عکس</a></li>
+                        <hr>
+                        <li><a href="AboutUs.html">تماس با ما</a></li>
+                    </ul>  
+                </div>  
+            </div>
+        <!--End Top Menu-->
+        <div class="uk-child-width-1-3@m uk-child-width-1-1@s reservation uk-section-small uk-padding-small">
+            <div class="reservation-services">
+                <ul class="uk-list uk-list-decimal">
+                    <li><p id="ReservationStep1" class="active">نوع سرویس</p></li>
+                    <li><p id="ReservationStep2">تایم</p></li>
+                    <li><p id="ReservationStep3">جزئیات</p></li>
+                    <li><p id="ReservationStep4">پرداخت</p></li>
+                    <li><p id="ReservationStep5">تمام</p></li>
+                </ul>
+            </div>
+            <div>
+                <progress class="uk-progress reservation-progress" value="1" max="5"></progress>
+                <div id="step1">
+                    <div class="uk-child-width-1-2" style="display: flex;">
+                        <div>
+                            <h5 class="uk-visible@s">سرویس خود را انتخاب کنید</h5>
+                            <button class="step1-btn"><span class="service-dropdown-title">نوع سرویس</span><span uk-icon="icon: triangle-down"></span>
+                            </button>
+                            <ul class="reservation-dropdown service-dropdown uk-list">
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h5 class="uk-visible@s">آرایشگر خود را انتخاب کنید</h5>
+                            <button type="button" class="step1-btn"><span class="stylist-dropdown-title">همه</span><span uk-icon="icon: triangle-down"></span>
+                                </span>
+                            </button>
+                            <ul class="reservation-dropdown stylist-dropdown uk-list">
+                                
+                            </ul>
+                        </div>
+                    </div>
+                    <p class="errs err errService">لطفا نوع سرویس را مشخص کنید</p>
+                    <p class="errs err errStylist">لطفا یک آرایشگر را انتخاب کنید</p>
+                    <hr>
+                    <div class="uk-text-left">
+                        <button onclick="ReserveStep2()" class="menu-reserve-btn uk-button uk-text-emphasis">مرحله بعد</button>
+                    </div>
+                </div>
+        
+                <div id="step2">
+                    <center>
+    
+                        <script type="text/javascript">
+                            function GetDateOfWeek(date){
+                                var a = date.day()
+                                if(a == 0){
+                                    // date = date.clone().add(1, 'day');
+                                    document.getElementById('time-table').style.display = 'none'
+                                    document.querySelector('.errHoliday').style.display = 'block'
+                                    return 'DD MMMM YYYY'
+        
+                                }
+                                else{
+                                    return 'DD MMMM YYYY'
+                                }
+                            }
+                            function mindate(){
+                                var date = new Date();
+                                var a = date.setDate(date.getDate() - 1);
+                                return a
+        
+                            }
+                            $(document).ready(function() {
+                            $(".reserveDate").persianDatepicker({
+                                autoClose: true,
+                                format: GetDateOfWeek(new persianDate()),
+                                minDate: new persianDate(mindate()),
+                                checkDate: function(unix){
+                                return new persianDate(unix).day() != 0;
+                                }
+                            });
+                            });
+                          </script>
+                          <div class="reservation-container">
+                            <h5>تاریخ رزرو را انتخاب کنید</h5>
+                            <span uk-icon="calendar"></span>
+                            <input id="DatePicker" type="text" class="uk-input reserveDate" readonly/>
+                            <p class="errs err errTime">لطفا تایم مورد نظر را مشخص کنید</p>
+                          </div>
+                          <div class="reservation-container">
+                            <div style="width: 77%;">
+                                <table dir="ltr" class="uk-table uk-table-small uk-table-divider uk-text-center">
+                                    <tbody id="time-table">
+                                        
+                                    </tbody>
+                                </table>
+                                <h4 class="errs errHoliday" style="color: red;">جمعه ها سالن تعطیل میباشد!!</h4>                    
+                            </div>
+                          </div>
+                    <hr>
+                    <div class="uk-child-width-1-2" style="display: flex;">
+                        <div class="uk-text-right">
+                            <button onclick="ReserveStep1()" class="menu-reserve-btn uk-button uk-text-emphasis">مرحله قبل</button>
+                        </div>
+                        <div class="uk-text-left">
+                            <button onclick="ReserveStep3()" class="menu-reserve-btn uk-button uk-text-emphasis">مرحله بعد</button>
+                        </div>
+                    </div>
+                    </center>
+                </div>
+                <div id="step3">
+                    <div class="uk-child-width-1-2 uk-flex">
+                        <div class="reservation-container"><input id="user-firstname" class="user-info uk-input uk-form-small" placeholder="نام" type="text"></div>
+                        <div class="reservation-container reservation-left"><input id="user-lastname" class="user-info uk-input uk-form-small" placeholder="نام خانوادگی" type="text"></div>
+                    </div>
+                    <div class="uk-child-width-1-2 uk-flex ">
+                        <div class="reservation-container"><input id="user-tell" class="user-info uk-input uk-form-small" placeholder="تلفن" type="tel"></div>
+                        <div class="reservation-container reservation-left"><input id="user-email" class="user-info uk-input uk-form-small" placeholder="ایمیل" type="email"></div>
+                    </div>
+                    <div>
+                        <ul class="err-user uk-list">
+        
+                        </ul>
+                    </div>
+                    <hr>
+                    <div class="uk-child-width-1-2" style="display: flex;">
+                        <div class="uk-text-right">
+                            <button onclick="ReserveStep2()" class="menu-reserve-btn uk-button uk-text-emphasis">مرحله قبل</button>
+                        </div>
+                        <div class="uk-text-left">
+                            <button onclick="ReserveStep4()" class="menu-reserve-btn uk-button uk-text-emphasis">مرحله بعد</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="step4">
+                    <form>
+                        <fieldset class="uk-fieldset">
+                    
+                            <h4>قیمت کل رزرو <span id="reserve-price"></span> است.</h4>
+                    
+                            <div id="before-code" class="uk-margin">
+                                <label>کد تخفیف<input id="checkdiscount" class="uk-input uk-form-small uk-width-small discount-code" type="text" placeholder="کد تخفیف"></label><button onclick="CheckCode()" type="button" class="menu-reserve-btn discount-code uk-form-small uk-button uk-text-emphasis">اعمال</button>
+                            </div>
+        
+                            <div id="error-code" class="uk-margin">
+                                <h4 class="err">کد تخفیف اشتباه است</h4>
+                            </div>
+        
+                            <div id="after-code" class="uk-margin">
+                                <h4 id="code-result">کد تخفیف اعمال شد <span style="color: rgb(69, 206, 28); ;" uk-icon="check"></span></h4>
+                                <h4>قیمت نهایی : <span id="new-price"></span></h4>
+                            </div>
+                    
+                            <h4>لطفا روش پرداخت خود را انتخاب کنید :</h4>
+                            <div style="display: grid;" class="uk-margin payments-div">
+                                <label><input class="uk-radio" type="radio" name="radio2" checked> درگاه پرداخت اول</label>
+                                <label><input class="uk-radio" type="radio" name="radio2"> درگاه پرداخت دوم</label>
+                                <label><input class="uk-radio" type="radio" name="radio2"> پرداخت حضوری</label>
+                            </div>
+                    
+                        </fieldset>
+                    </form>
+                    <hr>
+                    <div class="uk-child-width-1-2" style="display: flex;">
+                        <div class="uk-text-right">
+                            <button onclick="ReserveStep3()" class="menu-reserve-btn uk-button uk-text-emphasis">مرحله قبل</button>
+                        </div>
+                        <div class="uk-text-left">
+                            <button onclick="ReserveStep5()" class="menu-reserve-btn uk-button uk-text-emphasis">مرحله بعد</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="step5">
+                    <div class="uk-child-width-1-2" style="display: flex;">
+                       
+                    </div>
+                    <hr>
+                    <div class="uk-child-width-1-2" style="display: flex;">
+                        <div class="uk-text-right">
+                            <button onclick="ReserveStep4()" type="button" class="menu-reserve-btn uk-button uk-text-emphasis">مرحله قبل</button>
+                        </div>
+                        <div class="uk-text-left">
+                            <button onclick="FinishReserve()" class="menu-reserve-btn uk-button uk-text-emphasis">مرحله بعد</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <center>
+                    <img width="200" height="200" src="Resources/hairdresser-svgrepo.svg" alt="">
+                </center>
+            </div>
+        </div>
+        <div class="uk-section-small uk-width-1-3@m uk-width-1-1@s uk-margin-auto work-time">
+            <div>
+                <table class="uk-table uk-table-divider">
+                    <thead>
+                        <tr >
+                            <th>روزها</th>
+                            <th></th>
+                            <th>ساعات کاری</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>شنبه</td>
+                            <td>--------------------------></td>
+                            <td>9:00 تا 21:00</td>
+                        </tr>
+                        <tr>
+                            <td>یکشنبه</td>
+                            <td>--------------------------></td>
+                            <td>9:00 تا 21:00</td>
+                        </tr>
+                        <tr>
+                            <td>دوشنبه</td>
+                            <td>--------------------------></td>
+                            <td>9:00 تا 21:00</td>
+                        </tr>
+                        <tr>
+                            <td>سه شنبه</td>
+                            <td>--------------------------></td>
+                            <td>9:00 تا 21:00</td>
+                        </tr>
+                        <tr>
+                            <td>چهارشنبه</td>
+                            <td>--------------------------></td>
+                            <td>9:00 تا 21:00</td>
+                        </tr>
+                        <tr>
+                            <td>پنجشنبه</td>
+                            <td>--------------------------></td>
+                            <td>9:00 تا 21:00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- <div style="height: 50px;"></div> -->
+            
+        
+            <!-- <div class="uk-container">
+                <ul class="uk-list">
+                    <li><span>شنبه</span><span uk-icon="icon: minus; ratio: 3.5"></span><span>9:00 الی 20:00</span></li>
+                    <li><span>یکشنبه</span><span uk-icon="icon: minus; ratio: 3.5"></span><span>9:00 الی 20:00</span></li>
+                    <li><span>دوشنبه</span><span uk-icon="icon: minus; ratio: 3.5"></span><span>9:00 الی 20:00</span></li>
+                    <li><span>سه شنبه</span><span uk-icon="icon: minus; ratio: 3.5"></span><span>9:00 الی 20:00</span></li>
+                </ul>
+            </div> -->
+        </div>
+    
+        <footer class="uk-visible@m">
+            <div class="uk-footer uk-reservation-footer">
+                <div class="uk-container uk-container-expand">
+                    <div class="uk-grid uk-child-width-1-3@m" uk-grid>
+                        <div>
+                            <h2>درباره ما</h2>
+                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.</p>
+                        </div>
+                        <div>
+                            <h2>ارتباط با ما</h2>
+                            <ul class="uk-list">
+                            <li><i uk-icon="icon: location"></i> 123 Street, City, Country</li>
+                            <li><i class="receiver-icon" uk-icon="icon: receiver"></i>+1 234 567890</li>
+                            <li><i uk-icon="icon: instagram"></i> info@example.com</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3>Follow Us</h3>
+                            <ul class="uk-iconnav">
+                            <li><a href="#" uk-icon="icon: facebook"></a></li>
+                            <li><a href="#" uk-icon="icon: twitter"></a></li>
+                            <li><a href="#" uk-icon="icon: instagram"></a></li>
+                            <li><a href="#" uk-icon="icon: linkedin"></a></li>
+                            </ul>
+                        </div>      
+                    </div>
+                
+                    <hr>
+                
+                    <p class="designer">طراحی شده توسط <a class="uk-button uk-button-text uk-text-default" href="https://www.instagram.com/_taha_9_" target="_blank">طاها مرادی</a></p>
+                
+                </div>
+            </div>
+        </footer>
+        <footer class="footer uk-flex uk-flex-column uk-flex-center uk-hidden@s">
+            <ul class="social-icon">
+              <li class="social-icon__item"><a class="social-icon__link" href="#">
+                  <ion-icon name="logo-facebook"></ion-icon>
+                </a></li>
+              <li class="social-icon__item"><a class="social-icon__link" href="#">
+                  <ion-icon name="logo-twitter"></ion-icon>
+                </a></li>
+              <li class="social-icon__item"><a class="social-icon__link" href="#">
+                  <ion-icon name="logo-linkedin"></ion-icon>
+                </a></li>
+              <li class="social-icon__item"><a class="social-icon__link" href="#">
+                  <ion-icon name="logo-instagram"></ion-icon>
+                </a></li>
+            </ul>
+            <ul class="menu">
+              <li class="menu__item"><a class="menu__link" href="#">Home</a></li>
+              <li class="menu__item"><a class="menu__link" href="#">About</a></li>
+              <li class="menu__item"><a class="menu__link" href="#">Services</a></li>
+              <li class="menu__item"><a class="menu__link" href="#">Team</a></li>
+              <li class="menu__item"><a class="menu__link" href="#">Contact</a></li>
+        
+            </ul>
+            <p>&copy;2024 Taha Moradi | All Rights Reserved</p>
+        </footer>
+    </div>
+<a href="" class="go-top uk-visible@s" uk-totop uk-scroll></a>
+<script src="Js/uikit.min.js"></script>
+<script src="Js/uikit-icons.min.js"></script>
+<script src="Js/Reservation3.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

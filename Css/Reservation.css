@@ -1,0 +1,345 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-color: #180148;
+  --primary-bg-color: #333740;
+  --text-color: #b1b8ca;
+  --text-active: #ffffff;
+  --button-hover-bg-color: #2b2e34;
+  --border-color: #494d59;
+  --dropdown-service-height:0;
+  --dropdown-stylists-height: 0;
+  --rotate-service-arrow: 0;
+  --rotate-stylists-arrow:0;
+  --list-opacity: 0;
+  --transition-time: 0.2s;
+  --transition-timing: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --border-radius: 1.4rem;
+  --list-button-height: 3.5rem;
+  --floating-icon-top: 0;
+  --floating-icon-left: 0;
+}
+
+.reservation-container svg {
+  height: 1.6rem;
+  width: 1.6rem;
+}
+
+.text-truncate {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.dropdown-container h5{
+  width: 77%;
+}
+.stylist-dropdown{
+  align-items: flex-end
+}
+
+.dropdown-title-icon,
+.dropdown-arrow {
+  display: inline-flex;
+}
+
+.dropdown-title {
+  text-transform: capitalize;
+}
+
+.dropdown-button {
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+}
+.dropdown-stylists-button{
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  gap: 1%;
+}
+
+.dropdown-button svg,
+.dropdown-stylists-button svg {
+  transition: all var(--transition-time) var(--transition-timing);
+  fill: var(--text-color);
+}
+
+.dropdown-button svg,
+.dropdown-button span,
+.dropdown-stylists-button svg,
+.dropdown-stylists-button span{
+  pointer-events: none;
+}
+
+.dropdown-button:hover,
+.dropdown-button:focus,
+.dropdown-stylists-button:hover,
+.dropdown-stylists-button:focus {
+  color: var(--text-active);
+}
+
+.dropdown-button:hover svg,
+.dropdown-button:focus svg,
+.dropdown-stylists-button:hover svg,
+.dropdown-stylists-button:focus svg{
+  fill: var(--text-active);
+}
+
+.main-button {
+  width: 77%;  
+  height: 3rem;
+  border-radius: var(--border-radius);
+  color: #eadc4e;
+  background-color: var(--primary-bg-color);
+  border: 0.1rem solid var(--border-color);
+  transition: all var(--transition-time) var(--transition-timing);
+  padding: 0 1.1rem;
+}
+
+.main-button:focus {
+  border: 0.1rem solid #eadc4e;
+  box-shadow: 0 0 0 0.1rem #eadc4e;
+}
+
+.service-dropdown-button .dropdown-arrow {
+  transition: transform var(--transition-time) var(--transition-timing);
+  transform: rotate(var(--rotate-service-arrow));
+  /* margin: 0 67% 0 0; */
+}
+.stylist-dropdown-button .dropdown-arrow {
+  transition: transform var(--transition-time) var(--transition-timing);
+  transform: rotate(var(--rotate-stylists-arrow));
+  /* margin: 0 67% 0 0; */
+}
+
+.list-button {
+  border: none;
+  background-color: transparent;
+  height: var(--list-button-height);
+  transition: color var(--transition-time) var(--transition-timing);
+  color: var(--text-color);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.dropdown-Service-list-container {
+    width: 77%;
+  overflow: hidden;
+  max-height: var(--dropdown-service-height);
+  transition: max-height var(--transition-time) var(--transition-timing);
+}
+.dropdown-Stylists-list-container {
+  width: 77%;
+  overflow: hidden;
+  max-height: var(--dropdown-stylists-height);
+  transition: max-height var(--transition-time) var(--transition-timing);
+}
+.dropdown-list-wrapper {
+  margin-top: 0.5rem;
+  padding: 1rem;
+  background-color: var(--primary-bg-color);
+  border-radius: var(--border-radius);
+  border: 0.1rem solid var(--border-color);
+  position: relative;
+}
+
+ul.dropdown-list {
+  position: relative;
+  list-style-type: none;
+  margin: 0 !important;
+  padding-right: 5px;
+  padding-left: 0;
+}
+
+ul.dropdown-list::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 0;
+  opacity: 0;
+  height: var(--list-button-height);
+  pointer-events: none;
+}
+ul.dropdown-list:hover::before,
+ul.dropdown-list:hover ~ .floating-icon {
+  opacity: 1;
+}
+
+li.dropdown-list-item {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+  opacity: var(--list-opacity);
+  transition: opacity 0.8s var(--transition-timing);
+}
+
+.floating-icon {
+  height: calc(var(--floating-icon-size) * 1px);
+  width: calc(var(--floating-icon-size) * 1px);
+  position: absolute;
+  top: var(--floating-icon-top);
+  left: var(--floating-icon-left);
+  background-color: var(--border-color);
+  border-radius: 1rem;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--transition-time) var(--transition-timing);
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.floating-icon svg {
+  fill: var(--text-active);
+}
+.progress-yellow{
+    background-color: #ffff0052;
+}
+.uk-progress.progress-yellow::-webkit-progress-value {
+background-color: #ff7220be;
+}
+.uk-progress.progress-yellow::-moz-progress-bar {
+background-color: #ff7220be;
+}
+.uk-progress.progress-yellow::-ms-fill {
+background-color: #ff7220be;
+}
+.reservation-services .active{
+    color: #ff7120;
+}
+/* .select-service option:hover{
+    background-color: yellow !important;
+}
+.select-service:not([multiple]):not([size]){
+    padding-right: 5px;
+    background-position: 0% 50%;
+} */
+.reserveDate{
+  width: 77%;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.btn-next , .btn-prev{
+  rotate: 180deg;
+}
+.err{
+  margin: 0 !important;
+  margin-top: 15px !important;
+  color: red;
+}
+.errs{
+  display: none;
+}
+#time-table{
+  display: block;
+  text-align: -webkit-center;
+}
+#time-table tr{
+  border-bottom:0.1px solid white;
+}
+#time-table .chosen-time{
+  background-color: #FFD700;
+}
+#step2{
+  display: none;
+}
+#step3{
+  display: none;
+}
+.user-info{
+  width: 77%;
+}
+.reservation-left{
+  display: flex;
+  justify-content: flex-end;
+}
+#step4{
+  display: none;
+}
+#reserve-price , #new-price{
+  color: #ff9644;
+}
+.discount-code{
+  position: relative;
+  right: 2%;
+}
+#after-code{
+  display: none;
+}
+#error-code{
+  display: none;
+}
+#step5{
+  display: none;
+}
+@media only screen and (min-width: 768px){
+  .payments-div label{
+    margin-top: 2%;
+  }
+  .reservation-services{
+    display: grid;
+    justify-content: center;
+  }
+  .reservation-services ul{
+    font-size: 20px;
+    max-height: fit-content;
+  }
+  .reservation{
+    display: flex;
+  }
+  .dropdown-stylists-button span:nth-child(2){
+    font-size: 13px;
+  }
+  .dropdown-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 34rem;
+  }
+  .reservation-container{
+    margin-top: 4vh;
+  }
+}
+@media only screen and (max-width: 768px){
+  .main-button{
+    width: 100%;
+  }
+  .dropdown-Service-list-container,.dropdown-Stylists-list-container{
+    width: 100%;
+  }
+  .dropdown-button{
+    font-size: 13.5px;
+  }
+  .dropdown-list-wrapper{
+    padding: 0.6rem;
+  }
+  .dropdown-stylists-button{
+    font-size: 12.5px;
+  }
+  li.dropdown-list-item{
+    height: 42px;
+  }
+  .dropdown-stylists-button span:nth-child(2){
+    font-size: 10px;
+  }
+  #plotId{
+    position: relative;
+    top: 10px;
+  }
+  #step3 .reservation-container{
+    margin-top: 2vh;
+  }
+}
+

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="Css/uikit.min.css"> -->
+    <link rel="stylesheet" href="Css/uikit-rtl.min.css">
+    <link rel="stylesheet" href="Css/Site.css">
+    <link rel="stylesheet" href="Css/Reservation2.css">
+    <script src="Js/jquery-3.7.0.min.js"></script>
+    <script src="Js/persian-datepicker.js"></script>
+    <script src="http://babakhani.github.io/PersianWebToolkit/beta/lib/persian-date/dist/persian-date.js"></script>
+    <title>Reservation</title>
+</head>
+<body>
+    <div class="container">
+
+        <div class="content-wrap uk-position-relative">
+            <header>
+                <div id="mainCnt">
+                    <!--start Top Menu-->
+                    <nav class="top-menu uk-visible@s">
+                        <div class="uk-container uk-container-expand">
+                            <div uk-navbar>
+                                <div class="uk-navbar-right">
+                                    <a class="uk-navbar-item uk-logo" href="#" aria-label="Back to Home">
+                                        <img src="Resources/BarberShop-logo.png" alt="logo" width="100" height="100">
+                                    </a>
+                                    <div class="menu-text uk-text-right" uk-grid>
+                                        <p class="menu-text-right" uk-margin>
+                                            <a href="Home.html" class="uk-padding-small">
+                                                <button class="uk-button uk-button-text">صفحه اصلی</button>
+                                            </a>
+                                            <a href="Reservation.html" class="uk-padding-small">
+                                                <button class="uk-button uk-button-text">دریافت نوبت</button>
+                                            </a>
+                                            <a href="AboutUs.html" class="uk-padding-small">
+                                                <button class="uk-button uk-button-text">تماس با ما</button>
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+    
+                                <div class="uk-navbar-left">
+                                    <div class="menu-text uk-text-left">
+                                        <a href="Reservation2.html">
+                                            <button class="menu-reserve-btn uk-button uk-text-emphasis">دریافت نوبت</button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+    
+                <!-- Mobile Navbar -->
+                <nav class="top-menu uk-hidden@s">
+                    <div class="uk-container uk-container-expand">
+                        <div uk-navbar>
+                            <div class="uk-navbar-right">
+                            <a class="uk-button" type="button" uk-toggle="target: #offcanvas-nav"><span uk-icon="icon: menu; ratio:1.4;"></span></a>
+                            </div>
+                            <div class="uk-navbar-left">
+                                <div class="menu-text uk-text-left">
+                                    <a href="Reservation.html">
+                                        <button class="menu-reserve-btn uk-button uk-text-emphasis">دریافت نوبت</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+                <!-- Mobile Menu -->
+                <div id="offcanvas-nav" uk-offcanvas="overlay: true">
+                    <div class="uk-offcanvas-bar canvas-menu">
+                        <div class="uk-text-center">
+                            <a class="uk-logo" href="Home.html"><img src="Resources/BarberShop-logo.png" width="100" height="100"></a>
+                        </div>
+                        <ul class="uk-nav uk-nav-default">
+                            <li><a href="Home.html">صفحه اصلی</a></li>
+                            <hr>
+                            <li><a href="Reservation.html">دریافت نوبت</a></li>
+                            <hr>
+                            <li><a href="ImageAlbum.html">آلبوم عکس</a></li>
+                            <hr>
+                            <li><a href="AboutUs.html">تماس با ما</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!--End Top Menu-->
+            </header>
+            <div class="uk-child-width-1-3@m uk-child-width-1-1@s uk-flex uk-flex-wrap uk-section-small uk-padding">
+                <div>
+                    <div class="reservation-services">
+                        <ul class="uk-list uk-list-decimal">
+                            <li><p id="ReservationStep1" class="active">نوع سرویس</p></li>
+                            <li><p id="ReservationStep2">تایم</p></li>
+                            <li><p id="ReservationStep3">جزئیات</p></li>
+                            <li><p id="ReservationStep4">پرداخت</p></li>
+                            <li><p id="ReservationStep5">تمام</p></li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <progress class="uk-progress reservation-progress" value="1" max="5"></progress>
+                    <div id="step1">
+                        <div class="uk-child-width-1-2" style="display: flex;">
+                            <div>
+                                <h5 class="uk-visible@s">سرویس خود را انتخاب کنید</h5>
+                                <button class="step1-btn"><span class="service-dropdown-title">نوع سرویس</span><span uk-icon="icon: triangle-down"></span>
+                                </button>
+                                <ul class="reservation-dropdown service-dropdown uk-list">
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h5 class="uk-visible@s">آرایشگر خود را انتخاب کنید</h5>
+                                <button class="step1-btn"><span class="stylist-dropdown-title">همه</span><span uk-icon="icon: triangle-down"></span>
+                                  </span>
+                                </button>
+                                <ul class="reservation-dropdown stylist-dropdown uk-list">
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                        <p class="errs err errService">لطفا نوع سرویس را مشخص کنید</p>
+                        <p class="errs err errStylist">لطفا یک آرایشگر را انتخاب کنید</p>
+                        <hr>
+                        <div class="uk-text-left">
+                            <button onclick="ReserveStep2()" class="menu-reserve-btn uk-button uk-text-emphasis">مرحله بعد</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-visible@s">
+                    <center>
+                        <img width="200" height="200" src="Resources/hairdresser-svgrepo.svg" alt="">
+                    </center>
+                </div>
+            </div>
+            <div class="uk-section-small uk-width-1-3@m uk-width-1-1@s uk-margin-auto">
+                <div>
+                    <table class="uk-table uk-table-divider">
+                        <thead>
+                            <tr >
+                                <th>روزها</th>
+                                <th></th>
+                                <th>ساعات کاری</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>شنبه</td>
+                                <td>--------------------------></td>
+                                <td>9:00 تا 21:00</td>
+                            </tr>
+                            <tr>
+                                <td>یکشنبه</td>
+                                <td>--------------------------></td>
+                                <td>9:00 تا 21:00</td>
+                            </tr>
+                            <tr>
+                                <td>دوشنبه</td>
+                                <td>--------------------------></td>
+                                <td>9:00 تا 21:00</td>
+                            </tr>
+                            <tr>
+                                <td>سه شنبه</td>
+                                <td>--------------------------></td>
+                                <td>9:00 تا 21:00</td>
+                            </tr>
+                            <tr>
+                                <td>چهارشنبه</td>
+                                <td>--------------------------></td>
+                                <td>9:00 تا 21:00</td>
+                            </tr>
+                            <tr>
+                                <td>پنجشنبه</td>
+                                <td>--------------------------></td>
+                                <td>9:00 تا 21:00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <footer class="uk-section-default">
+            <div class="uk-footer uk-reservation-footer">
+                <div class="uk-container uk-container-expand">
+                    <div class="uk-grid uk-child-width-1-3@m" uk-grid>
+                        <div>
+                            <h2>درباره ما</h2>
+                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.</p>
+                        </div>
+                        <div>
+                            <h2>ارتباط با ما</h2>
+                            <ul class="uk-list">
+                            <li><i uk-icon="icon: location"></i> 123 Street, City, Country</li>
+                            <li><i class="receiver-icon" uk-icon="icon: receiver"></i>+1 234 567890</li>
+                            <li><i uk-icon="icon: instagram"></i> info@example.com</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3>Follow Us</h3>
+                            <ul class="uk-iconnav">
+                            <li><a href="#" uk-icon="icon: facebook"></a></li>
+                            <li><a href="#" uk-icon="icon: twitter"></a></li>
+                            <li><a href="#" uk-icon="icon: instagram"></a></li>
+                            <li><a href="#" uk-icon="icon: linkedin"></a></li>
+                            </ul>
+                        </div>      
+                    </div>
+                
+                    <hr>
+                
+                    <p class="designer">طراحی شده توسط <a class="uk-button uk-button-text uk-text-default" href="https://www.instagram.com/_taha_9_" target="_blank">طاها مرادی</a></p>
+                
+                </div>
+            </div>
+        </footer>
+    </div>
+<script src="Js/uikit.min.js"></script>
+<script src="Js/uikit-icons.min.js"></script>
+<script src="Js/Reservation2.js"></script>
+</body>
+</html>
