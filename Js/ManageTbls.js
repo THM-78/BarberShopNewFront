@@ -292,7 +292,7 @@ function getAllBeforeAfterImg(){
     contentType:'application/json',
     success: function(data){
         AddBtnDiv.innerHTML = `<a onclick="BeforeAfteAddBtn()" class="menu-reserve-btn uk-button uk-text-emphasis add-BeforeAfter-btn" href="#modal-BeforeAfter-add" uk-toggle="" role="button">اضافه کردن<span class="uk-margin-small-right" uk-icon="plus"></span></a>`
-        TableDiv.innerHTML = `<table class="uk-width-1-1"><thead><th>آیدی<th>قبل<th>بعد</thead><tbody id="BeforeAfter-tbl"></tbody></table>`
+        TableDiv.innerHTML = `<table class="uk-width-1-1"><thead><th>ردیف<th>قبل<th>بعد</thead><tbody id="BeforeAfter-tbl"></tbody></table>`
         var id = 0
         for(var i = 0; i <= data.length; i++){
             id++
@@ -301,6 +301,27 @@ function getAllBeforeAfterImg(){
     },
     error: function(){
       console.log('error')
+    }
+})
+}
+function getTodayReserves(){
+  $.ajax({
+    url:'https://localhost:44322/api/Reservation/GetTodayReserves',
+    type:'GET',
+    dataType:'json',
+    contentType:'application/json',
+    success: function(data){
+        AddBtnDiv.innerHTML = `<a onclick="ReservationSearchBtn()" class="menu-reserve-btn uk-button uk-text-emphasis search-Reservation-btn" href="#modal-Reservation-search" uk-toggle="" role="button">جستجو براساس تاریخ<span class="uk-margin-small-right" uk-icon="search"></span></a>`
+        TableDiv.innerHTML = `<table class="uk-width-1-1"><thead><th>آیدی<th>سرویس<th>تایم<th>آرایشگر<th></thead><tbody id="Reservation-tbl"></tbody></table>`
+        var id = 0
+        for(var i = 0; i <= data.length; i++){
+            id++
+            document.getElementById('Reservation-tbl').innerHTML += `<tr><td>${id}</td><td>${data[i].serviceType}</td><td>${extractTime(data[i].reserveDate)}</td><td>${data[i].hairStylist}</td><td><a id="reservation-delete${data[i].id}" class="uk-button uk-button-danger uk-text-emphasis menu-reserve-btn" onclick="DeleteReservation(this)" href="#modal-reservation-delete" uk-toggle="" role="button">حذف</a></td></tr>`
+        }
+    },
+    error: function(data){
+      UIkit.notification( 'فعلا رزروی برای روز جاری صورت نگرفته است' , {status:'danger', timeout: 3000})
+      AddBtnDiv.innerHTML = `<a onclick="ReservationSearchBtn()" class="menu-reserve-btn uk-button uk-text-emphasis search-Reservation-btn" href="#modal-Reservation-search" uk-toggle="" role="button">جستجو براساس تاریخ<span class="uk-margin-small-right" uk-icon="search"></span></a>`
     }
 })
 }
@@ -325,6 +346,9 @@ else if(parameter == 'suggestions'){
 }
 else if(parameter == 'before-afters'){
   getAllBeforeAfterImg()
+}
+else if(parameter == 'reserves'){
+  getTodayReserves()
 }
 
 //service operation
@@ -607,4 +631,182 @@ function DeleteBeforeAfterSave(t){
     error: function(data){
     }
   })
+}
+function DeleteReservation(t){
+  var id = t.id.substring(18)
+  document.querySelector('.delete-reservation-btn').id = id;
+}
+function DeleteReservationSave(t){
+  var id = t.id;
+  $.ajax({
+    url: `https://localhost:44322/api/Reservation/Delete/${id}`,
+    type:'DELETE',
+    contentType:'application/json',
+    success: function(data){
+      UIkit.modal('#modal-reservation-delete').hide()
+      getTodayReserves()
+    },
+    error: function(data){
+    }
+  })
+}
+function ReservationSearchBtn(){
+  document.getElementById('searchReservation-FromMonth').style.borderColor = '';
+  document.getElementById('searchReservation-UntilMonth').style.borderColor = '';
+  document.getElementById('searchReservation-FromYear').style.borderColor = '';
+  document.getElementById('searchReservation-UntilYear').style.borderColor = '';
+  document.getElementById('searchReservation-FromMonth').value = '';
+  document.getElementById('searchReservation-UntilMonth').value = '';
+  document.getElementById('searchReservation-FromYear').value = '';
+  document.getElementById('searchReservation-UntilYear').value = '';
+  $('#searchReservation-FromMonth').on("input", function () {
+    var input = document.getElementById('searchReservation-FromMonth')
+    let num = +this.value, max = 12, min = 1;
+    if (num > max || num < min) {
+       input.style.borderColor = 'red'
+        return false;
+      }
+      input.style.borderColor = ''
+    })
+  $('#searchReservation-UntilMonth').on("input", function () {
+    var input = document.getElementById('searchReservation-UntilMonth')
+    let num = +this.value, max = 12, min = 1;
+    if (num > max || num < min) {
+        input.style.borderColor = 'red'
+        return false;
+      }
+      input.style.borderColor = ''
+    })
+  $('#searchReservation-FromYear').on("input", function () {
+    var input = document.getElementById('searchReservation-FromYear')
+    let num = +this.value, max = 1500, min = 1400;
+    if (num > max || num < min) {
+        input.style.borderColor = 'red'
+        return false;
+      }
+      input.style.borderColor = ''
+    })
+  $('#searchReservation-UntilYear').on("input", function () {
+    var input = document.getElementById('searchReservation-UntilYear')
+    let num = +this.value, max = 1500, min = 1400;
+    if (num > max || num < min) {
+        input.style.borderColor = 'red'
+        return false;
+      }
+      input.style.borderColor = ''
+    })
+}
+function SearchReservationSave(){
+  var FromYear = document.getElementById('searchReservation-FromYear')
+  var UntilYear = document.getElementById('searchReservation-UntilYear')
+  var FromMonth = document.getElementById('searchReservation-FromMonth')
+  var UntilMonth = document.getElementById('searchReservation-UntilMonth')
+  var FromDay = document.getElementById('searchReservation-FromDay')
+  var UntilDay = document.getElementById('searchReservation-UntilDay')
+  if(FromMonth.style.borderColor == 'red' || FromMonth.value.trim() == ''){
+    return;
+  }
+  if(UntilMonth.style.borderColor == 'red' || UntilMonth.value.trim() == ''){
+    return;
+  }
+  if(FromYear.style.borderColor =='red' || FromYear.value.trim() == ''){
+    return;
+  }
+  if(UntilYear.style.borderColor == 'red' || UntilYear.value.trim() == ''){
+    return;
+  }
+  if(FromDay.value.trim() == ''){
+    return;
+  }
+  if(FromDay.value.trim() == '31'){
+    if(parseInt(UntilMonth.value.trim()) <= 6){
+      FromDay.style.borderColor = ''
+    }
+    else if(parseInt(UntilMonth.value.trim()) > 6){
+      FromDay.style.borderColor = 'red'
+      return;
+    }
+  }
+  if(UntilDay.value.trim() == '31'){
+    if(parseInt(UntilMonth.value.trim()) <= 6){
+      UntilDay.style.borderColor = ''
+    }
+    else if(parseInt(UntilMonth.value.trim()) > 6){
+      UntilDay.style.borderColor = 'red'
+      return;
+    }
+  }
+  if(FromMonth.value.trim() == '12' && FromDay.value.trim() == '30'){
+    if(isKabiseYear(parseInt(FromYear.value.trim()))){
+      FromDay.style.borderColor = ''
+    }
+    else{
+      FromDay.style.borderColor = 'red'
+      return;
+    }
+  }
+  if(UntilMonth.value.trim() == '12' && UntilMonth.value.trim() == '30'){
+    if(isKabiseYear(parseInt(untilYear.value.trim()))){
+      UntilDay.style.borderColor = ''
+    }
+    else{
+      UntilDay.style.borderColor = 'red'
+      return;
+    }
+  }
+  var dates ={
+    fromYear: FromYear.value.trim(),
+    fromMonth: FromMonth.value.trim(),
+    fromDay: FromDay.value.trim(),
+    untilYear: UntilYear.value.trim(),
+    untilMonth: UntilMonth.value.trim(),
+    untilDay: UntilDay.value.trim()
+  }
+  $.ajax({
+    url: `https://localhost:44322/api/Reservation/GetByTimePeriod`,
+    type:'POST',
+    data: JSON.stringify(dates),
+    contentType:'application/json',
+    success: function(data){
+      AddBtnDiv.innerHTML = `<a onclick="ReservationSearchBtn()" class="menu-reserve-btn uk-button uk-text-emphasis search-Reservation-btn" href="#modal-Reservation-search" uk-toggle="" role="button">جستجو براساس تاریخ<span class="uk-margin-small-right" uk-icon="search"></span></a>`
+      TableDiv.innerHTML = `<table class="uk-width-1-1"><thead><th>آیدی<th>سرویس<th>تایم<th>آرایشگر<th></thead><tbody id="Reservation-tbl"></tbody></table>`
+      var id = 0
+      UIkit.modal('#modal-Reservation-search').hide()
+      for(var i = 0; i <= data.length; i++){
+        id++
+        document.getElementById('Reservation-tbl').innerHTML += `<tr><td>${id}</td><td>${data[i].serviceType}</td><td>${data[i].reserveDate}</td><td>${data[i].hairStylist}</td><td><a id="reservation-delete${data[i].id}" class="uk-button uk-button-danger uk-text-emphasis menu-reserve-btn" onclick="DeleteReservation(this)" href="#modal-reservation-delete" uk-toggle="" role="button">حذف</a></td></tr>`
+      }
+    },
+    error: function(data){
+      AddBtnDiv.innerHTML = `<a onclick="ReservationSearchBtn()" class="menu-reserve-btn uk-button uk-text-emphasis search-Reservation-btn" href="#modal-Reservation-search" uk-toggle="" role="button">جستجو براساس تاریخ<span class="uk-margin-small-right" uk-icon="search"></span></a>`
+      UIkit.modal('#modal-Reservation-search').hide()
+      UIkit.notification( data.responseText , {status:'danger', timeout: 3000})
+    }
+  })
+
+}
+function extractTime(isoDateTimeString) {
+  // ایجاد یک شیء Date از رشته ورودی
+  const dateTime = new Date(isoDateTimeString);
+
+  // گرفتن ساعت و دقیقه و فرمت‌بندی آنها
+  const hours = dateTime.getHours().toString().padStart(2, '0');
+  const minutes = dateTime.getMinutes().toString().padStart(2, '0');
+
+  // ترکیب ساعت و دقیقه برای تشکیل رشته خروجی
+  const formattedTime = `${hours}:${minutes}`;
+
+  return formattedTime;
+}
+function isKabiseYear(year) {
+
+  if (year % 4 === 0) {
+    return true; // معمولاً هر 4 سال یکبار کبیسه است
+  } else if (year % 33 === 1 || year % 33 === 5 || year % 33 === 9 ||
+             year % 33 === 13 || year % 33 === 17 || year % 33 === 21 ||
+             year % 33 === 25 || year % 33 === 29) {
+    return true; // برخی سال‌های خاص در چرخه 33 ساله نیز کبیسه هستند
+  } else {
+    return false;
+  }
 }

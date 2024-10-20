@@ -198,7 +198,7 @@
         <button class="uk-button uk-text-emphasis menu-reserve-btn uk-modal-close" type="button">خیر</button>
         <button class="uk-button uk-text-emphasis menu-reserve-btn delete-suggestion-btn" onclick="DeleteSuggestionSave(this)" type="button">بله</button>
       </div>
-  </div>
+    </div>
   </div>
 
   <div id="modal-BeforeAfter-add" uk-modal>
@@ -428,6 +428,56 @@
       <div class="uk-modal-footer uk-text-right">
         <button class="uk-button uk-text-emphasis menu-reserve-btn uk-modal-close" type="button">خیر</button>
         <button class="uk-button uk-text-emphasis menu-reserve-btn delete-stylist-btn" onclick="DeleteStylistSave(this)" type="button">بله</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-Reservation-search" uk-modal>
+    <div class="uk-modal-dialog">
+      
+      <button class="uk-modal-close-default" type="button" uk-close></button>
+
+      <div class="uk-modal-header">
+          <h2 class="uk-modal-title">ویرایش آرایشگر</h2>
+      </div>
+
+      <div class="uk-modal-body" uk-overflow-auto>
+        <form>
+          <div class="uk-child-width-1-1">
+            <div class="uk-margin">
+              <label for="">از تاریخ : </label>
+              <input id="searchReservation-FromDay" class="uk-input uk-form-width-xsmall" type="number" aria-label="Input" placeholder="روز">
+              <input id="searchReservation-FromMonth" class="uk-input uk-form-width-xsmall" type="number" aria-label="Input" placeholder="ماه">
+              <input id="searchReservation-FromYear" class="uk-input uk-form-width-small" type="number" aria-label="Input" placeholder="سال (1403)">
+            </div>
+            <div class="uk-margin" >
+              <label for="">تا تاریخ : </label>
+              <input id="searchReservation-UntilDay" class="uk-input uk-form-width-xsmall" type="number" aria-label="Input" placeholder="روز">
+              <input id="searchReservation-UntilMonth" class="uk-input uk-form-width-xsmall" type="number" aria-label="Input" placeholder="ماه">
+              <input id="searchReservation-UntilYear" class="uk-input uk-form-width-small" type="number" aria-label="Input" placeholder="سال (1403)">
+            </div>
+          </div>
+        </form>
+        <div class="uk-margin uk-text-right" style="width: min-content; display: flex; gap: 20px;">
+          <button type="button" class="menu-reserve-btn uk-button uk-text-emphasis uk-modal-close">لغو</button>
+          <button type="button" onclick="SearchReservationSave(this)" class="menu-reserve-btn uk-button uk-text-emphasis uk-width-1-1 search-reservation-save">ذخیره</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-reservation-delete" uk-modal>
+    <div class="uk-modal-dialog">
+      <button class="uk-modal-close-default" type="button" uk-close></button>
+      <div class="uk-modal-header">
+          <h2 class="uk-modal-title">حذف رزرو</h2>
+      </div>
+      <div class="uk-modal-body">
+          <p>آیا از حذف شدن این رزرو اطمینان دارید؟</p>
+      </div>
+      <div class="uk-modal-footer uk-text-right">
+        <button class="uk-button uk-text-emphasis menu-reserve-btn uk-modal-close" type="button">خیر</button>
+        <button class="uk-button uk-text-emphasis menu-reserve-btn delete-reservation-btn" onclick="DeleteReservationSave(this)" type="button">بله</button>
       </div>
     </div>
   </div>

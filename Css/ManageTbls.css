@@ -16,8 +16,8 @@
 --group-background-focus: #678EFE;
 
 }
-.period-field::-webkit-outer-spin-button,
-.period-field::-webkit-inner-spin-button {
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
